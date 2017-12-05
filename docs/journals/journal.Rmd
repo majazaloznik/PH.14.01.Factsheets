@@ -1,0 +1,40 @@
+---
+title: "Journal"
+output:
+  pdf_document: default
+---
+# Tuesday 5.12.2017
+
+1. This project had been started over a month ago, and got pretty far, then was asked by SH to stop working on the FS.. Anyway, I'm now starting again, first by migrating it into my new project template, makefile and all.
+
+This is what my makefile looks like graphically at the minute:
+
+```{r, echo = FALSE, out.width='100%'}
+knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.png"))
+```
+
+2. Initialise readme. And make it have the makefile plot. And the builiding of the readme be in the makefile plot. So meta ;)
+
+3. Initial commit. 
+
+4. Migration:
+
+* DHS application form -> dictionarries
+
+5. Now think through how to deal with the data import, because there is like 2GB of this stuff zipped, let alone unzipped. OK, there seems to be a library that helps with this, called `lodown` and this is part of the **Analyse survey data for free project** by Anthony Joseph Damico [http://asdfree.com/prerequisites.html]. So let's try that first. 
+
+6. Requires new Rtools, then devtools package and finally `install_github( "ajdamico/lodown" , dependencies = TRUE )` to install the lodown package from github. 
+
+7. OK, that didn't work :( Got " length(project.line) == 1 is not TRUE" error when tried to run `get_catalog()`, no idea why. 
+
+8. OK, second try. So I start with a form on the DHS website, where i pick the countires, (all), the survey (individual recode) and the file type (stata system file). Then I get a url list. It seems that if I am logged in and in the correct 'project' in a browser, I can download from that browser. So presumably I won't be able to download fro R direct using `download.file()`. 
+
+9. Right, what I'll do is simply download all the files into data/raw, period. Here is the process:
+
+* Get the text file with the urls from the DHS website. saved in `data\raw\url.list.txt`.
+* download all the (currenlty) 321 zip files into `data\raw`. Shit, I've got 318 of them already, which ones are missing?
+* WOW, so turns out that the 'unique file naming system' is actually not unique at all, since the Indian surveys are actually split into states and (at least) one of these has the same name as Kenya `KEIR42DT.zip`. FFS. OK, so now I have to rename the Kenya ones as KN. MANUALLY. 
+* Then prepare a dataframe - catalog - to deal with the importers etc.
+* learn regular expressions to get out the survey ID, which helps distinguish the Indian ones. 
+
+[DHS DOCUMENTATION LINK](https://www.dhsprogram.com/publications/publication-search.cfm?type=35)

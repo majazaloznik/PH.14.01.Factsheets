@@ -8,3 +8,6 @@
 /data-sources
 /docs
 /figures
+*.html
+
+

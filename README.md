@@ -19,7 +19,7 @@ R, Rstudio (pandoc, make), Python, some sort of unzipping utility... If it works
 
 ### Authors
 
-* **Maja Zalo\v znik**
+* **Maja Zalo&zcaron;nik**
 
 ## License
 
