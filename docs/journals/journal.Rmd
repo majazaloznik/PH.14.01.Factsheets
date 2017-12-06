@@ -38,3 +38,14 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 * learn regular expressions to get out the survey ID, which helps distinguish the Indian ones. 
 
 [DHS DOCUMENTATION LINK](https://www.dhsprogram.com/publications/publication-search.cfm?type=35)
+
+
+# Wednesday 6.12.2017
+
+1. OK, continuing with the `00-import.R` file, which should output individual `.rds` files, and a table summarising the datasets. Input is the url list (and the files already downloaded in the `/data/raw` folder. 
+
+2. This is the annoying manual shit: I have to fix the KE file extensions to KN, in the folder, and in the catalog dataframe. 
+
+3. During importation there are numerous warning messages for duplicate labels. We are summarily ignoring these. 
+
+4. Preparing a funciton to import and clean up after itself.. A bit complicated ;) The `Stata.file()` function - the importer - unzipps the file into the working dir, i need to get rid of it 
