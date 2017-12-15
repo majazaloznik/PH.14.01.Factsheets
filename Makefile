@@ -11,12 +11,15 @@ DATA = $(DIR)/data
 DT/P = $(DATA)/processed
 
 DT/R = $(DATA)/raw
+DT/I = $(DATA)/interim 
 
 DOCS = $(DIR)/docs
 D/J = $(DOCS)/journals
 
 FIG = $(DIR)/figures
 
+# .interim .rds files
+DT/I/.rds = $(wildcard $(DT/I)*.rds)
 
 # commands ####################################################################
 # recipe to knit pdf from first prerequisite
@@ -28,7 +31,7 @@ KNIT-HTML = Rscript -e "require(rmarkdown); render('$<', output_dir = '$(@D)', o
 
 # DEPENDENCIES   ##############################################################
 ###############################################################################
-all:   $(D/J)/journal.pdf README.html
+all:   $(D/J)/journal.pdf README.html $(DT/I/.rds)
 		-rm $(wildcard ./docs/*/tex2pdf*) -fr
 
   
@@ -47,3 +50,10 @@ $(D/J)/journal.pdf:  $(D/J)/journal.Rmd $(FIG)/make.png
 
 README.html: README.md $(FIG)/make.png
 	$(KNIT-HTML)
+	
+$(DT/I/.rds): $(C/DC)/01-import.R $(DT/R)/catalog.full.rds
+	Rscript -e "source('$<')"
+
+# catalog is extracted first
+$(DT/R)/catalog.full.rds:  $(C/DC)/00-data-catalog.R
+	Rscript -e "source('$<')"

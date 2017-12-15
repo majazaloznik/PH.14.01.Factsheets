@@ -48,4 +48,50 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 
 3. During importation there are numerous warning messages for duplicate labels. We are summarily ignoring these. 
 
-4. Preparing a funciton to import and clean up after itself.. A bit complicated ;) The `Stata.file()` function - the importer - unzipps the file into the working dir, i need to get rid of it 
+4. Preparing a funciton to import and clean up after itself.. A bit complicated ;) The `Stata.file()` function - the importer - unzipps the file into the working dir, i need to get rid of the files.. Also the .dta files have different names, i.e. cases..
+
+5. Let it run over night.
+
+# Thursday 7.12.2017
+
+1. Stopped over night because there was not enough disk space.. I couldn't automatically delete the .dta files, because the importer is some sort of external pointer that is kept open randomly and makes it impossible to delete the file, even though you then can a while later or sth.. Anyway.
+
+2. Reran the rest of the files. It did get stuck again a little bit with some dta error - version 0 isn't supported, but that cleared up magically after I reran teh third time. 
+
+3. Looks like the last four or so importers keep an open connection.
+
+4. Error in get.dictionary.dta(dta) : version 80 not yet supported, happened again. 
+
+# Tuesday 12.12.17
+
+1. Got word from the `lodown` package developer that I might want to look at the project name I have on the DHS website, and it looks like the length of the name made lodown not work. So actually if I change it to sth shorter it would work. [[https://github.com/ajdamico/lodown/issues/124]]
+
+2. This is very annoying mainly because I've already done the whole thing manually in the meantime. Classic. 
+
+# Thursay 14.12.17
+
+1. Argh, for complete redproducibility let's go and do the `lodown` thing then. 
+
+2. What Anthony, the `lodown` guy might find useful is a regex thing to maket he catalogue a bit more usefil, because the catalog doesn't distinguish different types of files (surveys and filetypes). 
+
+3. Also, the lodown catalog for DHS puts every file in it's own folder it seems, so let's first try to make it not do that.
+
+4. Right, seems that I extracted the dataset type and filetypes correctly, as i end up with 321 files in my catalog, same as I had in the manually ticked url list from the DHS website.
+
+5. Now change the download folder. Test with single dataset. 
+
+6. OK, testing looks good! It's downloading the file, and unzipping it, and looks like it's also savign the .dta file as an .rds object. 
+
+# Friday 15.12.17
+
+1. Now need to get the `00-import.R` to source properly from the makefile. 
+
+2. So how can I stop the `00-import.R` script from importing the catalog every time? Ah, nice, separate the catalog build from the import. Now won't have to repeat it every time. 
+
+3. Now I have a different problem. The lodown package is great in extracting the file, but it reads the `dta` file and saves it as a dataframe, thereby loosing the value label data. 
+
+4. AAh, but it isn't, it uses `haven::read_dta`, so the labels are there, if only in some weird `labelling` format.. But OK, you have to use `haven::as_facto()` to get it to behave as a factor, all good. 
+
+5. Now, let's try and run the whole download thing, that should be the last of 01-import.R And let me commit this now as working download.. 
+
+* ToDO suppressPackageStartupMessages()
