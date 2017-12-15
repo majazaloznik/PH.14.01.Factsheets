@@ -94,4 +94,35 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 
 5. Now, let's try and run the whole download thing, that should be the last of 01-import.R And let me commit this now as working download.. 
 
-* ToDO suppressPackageStartupMessages()
+6. Started it, went to 80/226, then got a memory error... I've upped the memory limit now, hope that's all it needs. It's India, isn't it. It is, and it made it!! Hooray, let's not run this again ;)
+
+7. In the mean time I write a new cleaning file. `/code/data-cleaning/02-clean.R`
+
+8.  Man, 185 of 226, I know what it is as well, the double zip file... https://userforum.dhsprogram.com/index.php?t=msg&goto=13740&#msg_13740 is an open issue, but ffd, I'm afraid I'll have to do this manually. From https://dhsprogram.com/customcf/legacy/data/download_dataset.cfm?Filename=SNIR7QDT.ZIP&Tp=1&Ctry_Code=SN&surv_id=524
+ And now the `01-import.R` file starts from 187 onwards, that's just the way it is...
+ 
+9. OK, there's another Senegal like that as well, SNIR70DT.. Hope the rest are not fucked!
+
+10. So I should end up with the zip files deleted from `/data/raw` so only two of the .dta senegal files should be kept there in case this ever needs to be repeated. 
+
+11. The there should be 226 .rds interim files, and the one catalog.rds file there as well. These catalog.rds files are a bit annoying because I use the wildcard thing in the makefile to look at all of them - and see if they need updating, but since both `01-import` and `02-clean` produce both all the rds files at the same time, this is OK. 
+
+12. BUT it won't be OK if I put any other rds files in there. Technically I shouldn't, because I have the `/results` folder, so don't let me forget that!
+
+13. Ach, and there is an error with fucking Kerala, since now I managed to write both KE and IK on the same file, but because the actual Kerala doesn't even have v632, I'll just pretend It didn't happen. (ToDo)
+** file naming conventions DHS ** are here: https://dhsprogram.com/data/File-Types-and-Names.cfm
+
+14. OMG, looks like `02-clean` also works -> never ever touch those two files again ;)
+
+15. (NB: I'm not sure why the makefile wouldn't work until I added the second catalog to the all dependency..
+
+16. Also, delete the "IK" one, cause it isn't Kerala anyway, just a doubke Kenya. 
+
+17. So with one catalogue and one make.dot, this leaves 144 .rds files in the processed folder. 
+
+
+# ToDO 
+
+* suppressPackageStartupMessages()
+* Kerala fix if ever rerun.. 
+

@@ -15,7 +15,7 @@
 ###############################################################################
 options(stringsAsFactors = FALSE)
 library(lodown)
-
+memory.limit(256000)
 
 ## 1.  Import and subset data #################################################
 ###############################################################################
@@ -53,26 +53,30 @@ catalog$output_filename <-   sub( "((\\w*/){2})(.*)/(.*$)", "\\1\\4",
 # i treid changing this to interim, but didn't do anything, goes into raw
 # anyway.. 
 catalog$output_folder <- "data/raw"
-
+rownames(catalog) <- seq(length=nrow(catalog))
 
 ## 1.3. Download files#########################################################
 # Now if I run this normally, the Kenya one will overwrite the Kerala one,
 # as  I am throwing it all inthe same folder. SO I will best just rename Kerala, 
 # and then repeat Kenya
+# but I am nor fixing the Senegal stuff as well, so skipping them here and 
+# adding them manually at the end, and remove bloody Kerala as well
 
-lodown( "dhs" , catalog, 
+lodown( "dhs" , catalog[c(1:93, 95:185, 187, 189:226),], 
         your_email = "maja.zaloznik@gmail.com" , 
         your_password = "barabe2017" , 
         your_project = "Cross cultural variation in")
-# rename the KE file to IK - india-Kerala, then repeat
-file.rename("data/raw/KEIR42DT.rds", "data/raw/IKIR42DT.rds")
-lodown( "dhs" , subset(catalog, catalog.subset$country == "Kenya"), 
-         your_email = "maja.zaloznik@gmail.com" , 
-         your_password = "barabe2017" , 
-         your_project = "Cross cultural variation in")
- 
-# just fix the catalog filecode in case i need it later. 
-catalog$filecode[catalog$filecode == "KEIR42DT" & catalog$id == 156 ] <- "IKIR42DT"
+
+## 1.3.5. I need to manually add the bloody Senegal file, otherwise I'll never
+# fnish this 
+# so I manually downloaded tbe SNIR7QDL.zip file and double unzipped it and save it
+# here as .rds
+x <- data.frame(haven::read_dta("data/raw/SNIR7QFL.DTA"))
+names(x) <- tolower(names(x))
+saveRDS(x, file = "data/raw/SNIR7QDT.rds")
+x <- data.frame(haven::read_dta("data/raw/SNIR70FL.DTA"))
+names(x) <- tolower(names(x))
+saveRDS(x, file = "data/raw/SNIR70DT.rds")
 
 ## 1.4 move around stuff ######################################################
 # which .rds files have now been saved? (pattern stops from deleting the catalog)

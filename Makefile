@@ -19,7 +19,10 @@ D/J = $(DOCS)/journals
 FIG = $(DIR)/figures
 
 # .interim .rds files
-DT/I/.rds = $(wildcard $(DT/I)*.rds)
+DT/I/.rds = $(wildcard $(DT/I)/*.rds)
+
+# processed .rds files
+DT/P/.rds = $(wildcard $(DT/P)/*.rds)
 
 # commands ####################################################################
 # recipe to knit pdf from first prerequisite
@@ -31,10 +34,11 @@ KNIT-HTML = Rscript -e "require(rmarkdown); render('$<', output_dir = '$(@D)', o
 
 # DEPENDENCIES   ##############################################################
 ###############################################################################
-all:   $(D/J)/journal.pdf README.html $(DT/I/.rds)
+all:   $(D/J)/journal.pdf README.html $(DT/P/.rds) 
 		-rm $(wildcard ./docs/*/tex2pdf*) -fr
 
-  
+dot: $(FIG)/make.png 
+
 # top level dependencies ######################################################
 # make file .dot
 $(DT/P)/make.dot : $(DIR)/Makefile
@@ -50,10 +54,17 @@ $(D/J)/journal.pdf:  $(D/J)/journal.Rmd $(FIG)/make.png
 
 README.html: README.md $(FIG)/make.png
 	$(KNIT-HTML)
-	
-$(DT/I/.rds): $(C/DC)/01-import.R $(DT/R)/catalog.full.rds
-	Rscript -e "source('$<')"
 
 # catalog is extracted first
 $(DT/R)/catalog.full.rds:  $(C/DC)/00-data-catalog.R
 	Rscript -e "source('$<')"
+	
+$(DT/I/.rds): $(C/DC)/01-import.R $(DT/R)/catalog.full.rds
+	Rscript -e "source('$<')"
+
+$(DT/I)/catalog.rds: $(C/DC)/01-import.R
+
+$(DT/P)/catalog.csv $(DT/P/.rds): $(C/DC)/02-clean.R $(DT/I)/catalog.rds $(DT/I/.rds)
+	Rscript -e "source('$<')"
+	
+$(C/DC)/02-clean.R: $(C/F)/FunDataExtractor.R
