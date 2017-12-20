@@ -46,7 +46,10 @@ $(DT/P)/make.dot : $(DIR)/Makefile
 
 # make chart from .dot
 $(FIG)/make.png : $(DT/P)/make.dot
-	Rscript -e "require(DiagrammeR); require(DiagrammeRsvg); require(rsvg); png::writePNG(rsvg(charToRaw(export_svg(grViz('$<')))), '$@')"
+	Rscript -e "suppressMessages(require(DiagrammeR)); \
+	suppressMessages(require(DiagrammeRsvg)); \
+	suppressMessages(require(rsvg)); \
+	png::writePNG(rsvg(charToRaw(export_svg(grViz('$<')))), '$@')"
 
 # journal (with graph) render to  pdf
 $(D/J)/journal.pdf:  $(D/J)/journal.Rmd $(FIG)/make.png

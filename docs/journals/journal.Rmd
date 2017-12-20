@@ -120,9 +120,25 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 
 17. So with one catalogue and one make.dot, this leaves 144 .rds files in the processed folder. 
 
+# Wednesday 20.12.17
+
+1. Running on linux now, so far so good. `make dot` works ;)
+
+2. DHS forum question asked here: https://userforum.dhsprogram.com/index.php?t=rview&goto=13741#msg_13741
+
+3. Opened Senegal Issue on github, Anthony asked for debug.
+
+4. This means installing on this machine R 3.4, devtools, lodown.., but getting there.
+
+5. And fixint the Senegal issue in the `lodown` package, how cool ;)
+[https://github.com/ajdamico/lodown/issues/126]
+
+6. OK, now I need to get on the plotting! So we have 144 processed files, each wiht 4 variables. Weights, rural/urban, 
+
+7. I'll just check the catalogue and v632 matches the files in `data\processed` to be sure. 
 
 # ToDO 
 
-* suppressPackageStartupMessages()
 * Kerala fix if ever rerun.. 
+* Senegal
 
