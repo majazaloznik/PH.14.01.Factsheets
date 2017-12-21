@@ -21,10 +21,11 @@ FunDataExtractor <- function(i){
       catalog$v632[i] <<- TRUE
       if(!all(is.na(full.table$v632))){ # exists, and isn't all NA
         extract.table <- subset(full.table, 
-                                select=c(wave   = v000,
-                                         weight = v005,
-                                         region = v102,
-                                         var    = v632))
+                                select=c(v000,
+                                         v005,
+                                         v102,
+                                         v632))
+        colnames(extract.table) <- c("wave", "weight", "region", "var")
         saveRDS(extract.table, file.extracted)
       } else {# all are NAs
         catalog$v632[i] <<- FALSE }

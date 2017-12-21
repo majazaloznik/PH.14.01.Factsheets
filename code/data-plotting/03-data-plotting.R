@@ -2,14 +2,22 @@
 ##  PLOTTING      #############################################################
 ###############################################################################
 ## 0. Preliminaries  ##########################################################
+## 1. Plotting ################################################################
 ###############################################################################
 ## 0. Preliminaries  ##########################################################
 library(dplyr)
+library(eulerr)
 catalog <- read.csv("data/processed/catalog.csv")
+
+## 0.1 clean slate ############################################################
 catalog <- filter(catalog, v632 == TRUE)
+catalog$full.rds <- paste0("data/interim/",catalog$filecode, ".rds")
+catalog$final.rds <- paste0("data/processed/",catalog$filecode, ".rds")
 
-catalog$filecode[1]
 
+df <- readRDS(catalog$final.rds[12])
+table(df$var)
+labelled::labelled(df$var)
 # for (i in 5:10){
 #   if (exists(as.character(all.df$codename[i]))){
 #     if (!all(is.na(get(as.character(all.df$codename[i]))$var))){

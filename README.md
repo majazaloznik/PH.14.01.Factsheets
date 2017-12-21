@@ -6,21 +6,15 @@ Repository for analysis and design of the factsheet---and any interactive visual
 
 ## Makefile
 
-Notes for deployment: 
-
-1. Manually download the DHS files (from the `data/raw/url.list.txt` list) into `/data/raw/`
-
-2. Then you should be able to run the whole thing with using the makefile. 
-
 The makefile is visualised below---be warned, this is the current state of the project, which is still in progress. 
 
 ![state of makefile](figures/make.png)
 
 ### Prerequisites
 
-DHS data requires free (for non-commnercial purposes) registration. And the `lodown` package unfortunately didn't work for DHS for me, so the data download is not automated. After the requried zip files are downloaded, the following programmes are also required: 
-R, Rstudio (pandoc, make), Python, some sort of unzipping utility... If it works, don't break it.
+DHS data requires free (for non-commnercial purposes) registration. With the help of the [`lodown `](https://github.com/ajdamico/lodown) package all the data download and extraction is automated.
 
+R, Rstudio (pandoc, make), Python, some sort of unzipping utility... If it works, don't break it.
 
 ### Authors
 

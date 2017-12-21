@@ -128,7 +128,7 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 
 3. Opened Senegal Issue on github, Anthony asked for debug.
 
-4. This means installing on this machine R 3.4, devtools, lodown.., but getting there.
+4. This means installing on this machine R 3.4, devtools, lodown.., but getting there. 
 
 5. And fixing the Senegal issue in the `lodown` package, how cool ;)
 [https://github.com/ajdamico/lodown/issues/126]
@@ -144,6 +144,25 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 1. Fix public credentials issue by using `.config` file in .gitignore
 
 2. Let's see if I can remove the git traces of it as well! save 01-importation as new file, delete old one. Commmit just the delete first. then `add -u` and then commit the new one. 
+
+3. That didn't work, I;ll try the [https://rtyley.github.io/bfg-repo-cleaner/] later.
+
+4. OK, get on to plotting. First of all, it seems that the `02-clean` code lost the labelling that came along with the first rds. Is there an easy fix? Or do I ignore it for now?
+
+5. Seems OK, from `labelled` package documentation: `Some base R functions like subset drop variable and value labels attached to a variable. copy_labels
+coud be used to restore these attributes.`
+
+6. Actually `subset` was not dropping labells, or rather it only did so because I changed the variable names. Changing them later fixes that. 
+
+7. Rerun the `02-clean.R` on everything.. 
+
+8. Did installing r3.4 ruin all my other package installations? of course it did.
+
+9. OK, `lodown` seems my first solution was the way to go afterall, but no worries, a learned a tonne and it was fun. 
+
+10. Now I also have to not forget about the makefile... I need to 'touch' all the rds files though, don't want to do them again on mobile data. So I did:
+`system("touch data/interim/*.rds")`
+
 
 # ToDO 
 

@@ -24,6 +24,7 @@ source("code/functions/FunDataExtractor.R")
 catalog <- readRDS("data/interim/catalog.rds")
 # add new empty variable to keep track of which files have been extracted
 catalog$v632 <- NA
+
 # 1.Extract only required variables############################################
 ###############################################################################
 #' This reduces each country table to essentially four (for now) variables
@@ -37,5 +38,5 @@ for (i in 1:nrow(catalog)){
 }
 
 write.csv(catalog, "data/processed/catalog.csv")
- # 
+
 
