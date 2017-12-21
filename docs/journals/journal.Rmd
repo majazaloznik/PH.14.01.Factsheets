@@ -130,12 +130,20 @@ knitr::include_graphics(paste0(rprojroot::find_root("Makefile"),"/figures/make.p
 
 4. This means installing on this machine R 3.4, devtools, lodown.., but getting there.
 
-5. And fixint the Senegal issue in the `lodown` package, how cool ;)
+5. And fixing the Senegal issue in the `lodown` package, how cool ;)
 [https://github.com/ajdamico/lodown/issues/126]
 
 6. OK, now I need to get on the plotting! So we have 144 processed files, each wiht 4 variables. Weights, rural/urban, 
 
 7. I'll just check the catalogue and v632 matches the files in `data\processed` to be sure. 
+
+8. OK, Senegal `lowdown` PR made, let's see ;) Learned a neat looping trick, where you remove the current object from the looping index
+
+# Thursday 21.12.17
+
+1. Fix public credentials issue by using `.config` file in .gitignore
+
+2. Let's see if I can remove the git traces of it as well! save 01-importation as new file, delete old one. Commmit just the delete first. then `add -u` and then commit the new one. 
 
 # ToDO 
 
