@@ -8,6 +8,7 @@
 library(dplyr)
 library(eulerr)
 catalog <- read.csv("data/processed/catalog.csv")
+source("code/functions/FunPlotSimple.R")
 
 ## 0.1 clean slate ############################################################
 catalog <- filter(catalog, v632 == TRUE)
@@ -15,9 +16,19 @@ catalog$full.rds <- paste0("data/interim/",catalog$filecode, ".rds")
 catalog$final.rds <- paste0("data/processed/",catalog$filecode, ".rds")
 
 
-df <- readRDS(catalog$final.rds[12])
-table(df$var)
-labelled::labelled(df$var)
+# df <- readRDS(catalog$final.rds[12])
+# table(df$var)
+# labelled::labelled(df$var)
+
+postscript("figures/test1.eps")
+FunPlotSimple()
+dev.off()
+postscript("figures/test2.eps")
+FunPlotSimple()
+dev.off()
+postscript("figures/test3.eps")
+FunPlotSimple()
+dev.off()
 # for (i in 5:10){
 #   if (exists(as.character(all.df$codename[i]))){
 #     if (!all(is.na(get(as.character(all.df$codename[i]))$var))){
