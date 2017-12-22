@@ -18,11 +18,6 @@ D/J = $(DOCS)/journals
 
 FIG = $(DIR)/figures
 
-# .interim .rds files
-DT/I/.rds = $(wildcard $(DT/I)/*IR*.rds)
-
-# .processed .rds files
-DT/P/.rds = $(wildcard $(DT/P)/*IR*.rds)
 
 # plot .eps files
 FIG/.eps = $(wildcard $(FIG)/*.eps)
@@ -37,7 +32,7 @@ KNIT-HTML = Rscript -e "require(rmarkdown); render('$<', output_dir = '$(@D)', o
 
 # DEPENDENCIES   ##############################################################
 ###############################################################################
-all:  $(FIG/.eps) $(D/J)/journal.pdf README.html
+all:  $(DT/I)/%.rds $(D/J)/journal.pdf README.html
 	-rm $(wildcard ./docs/*/tex2pdf*) -fr
 
 dot: $(FIG)/make.png 
@@ -73,21 +68,22 @@ $(C/DC)/01-import.R: $(DT/R)/catalog.full.rds
 $(DT/I)/catalog.rds: $(C/DC)/01-import.R
 
 # imports all the interim .rds files 
-$(DT/I/%.rds): $(C/DC)/01-import.R
+$(DT/I)/%.rds: $(C/DC)/01-import.R
 	Rscript -e "source('$<')"
+
 
 # extraction funciton called from cleaning script
 $(C/DC)/02-clean.R: $(C/F)/FunDataExtractor.R
 
+$(DT/P)/catalog.csv: $(C/DC)/02-clean.R $(DT/I)/%.rds
 
 # cleans all the /interim .rds files into /processed
-$(DT/P/%.rds): $(C/DC)/02-clean.R $(DT/I/%.rds)
-	Rscript -e "source('$<')"
+$(DT/P)/%.rds: $(C/DC)/02-clean.R $(DT/I)/%.rds
+	R	script -e "source('$<')"
 
 # plotting funciton called from cleaning script
 $(C/DP)/03-data-plotting.R: $(C/F)/FunPlotSimple.R
 
 # plots 
-$(FIG/.eps): $(C/DP)/03-data-plotting.R $(DT/P/%.rds)
+$(FIG)/%.eps: $(C/DP)/03-data-plotting.R $(DT/P)/%.rds
 	Rscript -e "source('$<')"
-

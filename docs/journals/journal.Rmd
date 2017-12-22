@@ -171,10 +171,25 @@ could be used to restore these attributes.`
 
 14. OK, so that was AN HOUR lost because i had a space at the end of a folder variable declaration in the makefile. (NB: there looks like a good make book is available free here: [http://www.oreilly.com/openbook/make3/book/ch02.pdf])
 
-15. there was more to it... the **pattern rule** again, which I'm not sure I understand anymore now.. I ended up using % inside (what I thought were) variable names... But it worked, and stopped running the clean file 145 times. Commit working skeleton. (the Rstudio build tab is throwing an error saying the build directory does not contain a makefile when it does?)
+15. there was more to it... the **pattern rule** again, which I'm not sure I understand anymore now.. I ended up using % inside (what I thought were) variable names... But it worked, and stopped running the clean file 145 times. Commit working skeleton. (the Rstudio build tab is throwing an error saying the build directory does not contain a makefile when it does?). 
+16. But it didn't really, shit.
+17. I'll figure it out later, let's try and figure out why the processed files didn't have labels. Rerunning `02-clean.R`
+
+18. OK, plotting. SO `eulerr` is beautiful. But if you only have two circles, the fitting is presumably easy, but it produces plots where the centres are at a different angle each time. Which makes it impossible to compare visually.
+
+19. but the `fit` gives me the cetroids and the radius, which is all I need, right? SO if I get the distance from the centroids from there, and put it at an angle, the same angle every time, I can plot this in `base r`?
+
+20. Man, `eulerr` ones are beautiful, got them working with region, but need to place them side by side at same orientation. 
+
+21. This will be great. OK, got the base version working, but `plotrix::draw.circle` doesnt do transparencies, so I'll have to rewrite that function I guess. Density lines just aren't as good. 
+
+22. or use `rgb()` which has alpha ;). but check [https://github.com/jolars/qualpalr] for pretty colors
+
+
 # ToDO 
 
 * graphviz prettify
+* test minimal makefile example before making this whole thing work again
 
 
 

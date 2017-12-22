@@ -1,6 +1,4 @@
 #' FunDataExtractor
-
-#' FunDataExtractor
 #' 
 #' Extracts subset of table and resaves, updating the catalog
 #' 

@@ -37,6 +37,12 @@ for (i in 1:nrow(catalog)){
   FunDataExtractor(i)
 }
 
-write.csv(catalog, "data/processed/catalog.csv")
+# update catalog to only v632 
+catalog <- dplyr::filter(catalog, v632 == TRUE)
+catalog$full.rds <- paste0("data/interim/",catalog$filecode, ".rds")
+catalog$final.rds <- paste0("data/processed/",catalog$filecode, ".rds")
+
+#save catalog
+write.csv(catalog, "data/processed/catalog.final.csv")
 
 
