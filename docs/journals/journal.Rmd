@@ -201,7 +201,11 @@ could be used to restore these attributes.`
 
 1. OK, i'll start thinking about the layout
 
+2. Email Keith of DHS to see wtf is the Senegal deal anyway. 
 
+3. it seems some surveys don't have both urban and rural (second 2007 dominican one for example.) Check which ones and remove? Yeah, that's the only one. It's sugar cane plantation workers, I'll take it out. 
+
+4. Now I need to add the regions to the catalog, would make it easier to do the layout. Found a UNcodes file from two factsheets back, i'll use that. But have to manually change some names... 
 
 # ToDO 
 

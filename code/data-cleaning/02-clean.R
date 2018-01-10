@@ -39,8 +39,12 @@ for (i in 1:nrow(catalog)){
 
 # update catalog to only v632 
 catalog <- dplyr::filter(catalog, v632 == TRUE)
+
 catalog$full.rds <- paste0("data/interim/",catalog$filecode, ".rds")
 catalog$final.rds <- paste0("data/processed/",catalog$filecode, ".rds")
+
+#  remove the second dominican file that is only sugar plantatin workers
+catalog <- dplyr::filter(catalog, output_filename != "data/raw/DRIR5ADT.zip")
 
 #save catalog
 write.csv(catalog, "data/processed/catalog.final.csv")

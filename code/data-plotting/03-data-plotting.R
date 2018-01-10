@@ -14,14 +14,15 @@ source("code/functions/FunPlotSimple.R")
 
 
 
-pal <- qualpal(n = 3, list(h = c(0, 360), s = c(0.4, 0.6), l = c(0.6, 0.8)),
+pal <- qualpalr::qualpal(n = 3, list(h = c(0, 360), s = c(0.4, 0.6), l = c(0.6, 0.8)),
                cvd = "deutan", cvd_severity = 0.5)
 
-FunPlotBar(44, pal)
+FunPlotBar(34, pal)
+FunPlotBar(35, pal)
 
 
 # colours for euler
-pal <- qualpal(n = 2, list(h = c(0, 180), s = c(0.4, 0.6), l = c(0.6, 0.85)))
+pal <- qualpalr::qualpal(n = 2, list(h = c(0, 180), s = c(0.4, 0.6), l = c(0.6, 0.85)))
 plot(pal)
 w1 <- pal$RGB[1,1]
 w2 <- pal$RGB[1,2]
