@@ -173,6 +173,7 @@ could be used to restore these attributes.`
 
 15. there was more to it... the **pattern rule** again, which I'm not sure I understand anymore now.. I ended up using % inside (what I thought were) variable names... But it worked, and stopped running the clean file 145 times. Commit working skeleton. (the Rstudio build tab is throwing an error saying the build directory does not contain a makefile when it does?). 
 16. But it didn't really, shit.
+
 17. I'll figure it out later, let's try and figure out why the processed files didn't have labels. Rerunning `02-clean.R`
 
 18. OK, plotting. SO `eulerr` is beautiful. But if you only have two circles, the fitting is presumably easy, but it produces plots where the centres are at a different angle each time. Which makes it impossible to compare visually.
@@ -184,6 +185,22 @@ could be used to restore these attributes.`
 21. This will be great. OK, got the base version working, but `plotrix::draw.circle` doesnt do transparencies, so I'll have to rewrite that function I guess. Density lines just aren't as good. 
 
 22. or use `rgb()` which has alpha ;). but check [https://github.com/jolars/qualpalr] for pretty colors
+
+# Friday 22.12.2017
+
+1. OK, let's chech out the `qualpalr` colors. They're colour blind friendly, look pretty, but I also need to find a good combo that will produce a good overlay distinction. 
+
+2. Clean up the `FunBasePlot` code. The funciton should be self-sufficient - as much as possible i.e. I've added the package:: calls to the functions instead of loading the whole package when the funciton is called. That way I can call the funciton from another script later and not worry about where the funcitons are from. 
+
+3. Something weird with `rgb()`, won't lett me pass a vector, only individual r, g and b values... works if you pass them as a matrix, but then alpha doesn't work. BUG?
+
+4. ARGH, the euler plots are pretty, but perfeclty useless.. I'll have to switch back to barplots...
+
+
+# Wednesday 10.1.2018
+
+1. OK, i'll start thinking about the layout
+
 
 
 # ToDO 

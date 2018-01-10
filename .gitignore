@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 .config
+.touching
 
 /data
 /results
