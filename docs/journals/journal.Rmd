@@ -207,6 +207,14 @@ could be used to restore these attributes.`
 
 4. Now I need to add the regions to the catalog, would make it easier to do the layout. Found a UNcodes file from two factsheets back, i'll use that. But have to manually change some names... 
 
+# Sunday 14.1.2018
+
+1. Get regions sorted out, this should happen at the end of `02-clean.R`. So we're changing the catalog names, not the UN ones. 
+
+2. 4 regions: Africa 84, Americas 24, Asia 34 and Europe 3. So let's maybe look at subregions instead. 
+
+3. Trying to get more resolution, sub.region name doens't help much, because all of ssa are togheter, but tehre is an intermediate region name for them.. 
+
 # ToDO 
 
 * graphviz prettify
