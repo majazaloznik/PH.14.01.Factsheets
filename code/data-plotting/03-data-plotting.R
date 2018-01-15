@@ -7,7 +7,8 @@
 ## 0. Preliminaries  ##########################################################
 options(stringsAsFactors = FALSE)
 catalog <- read.csv("data/processed/catalog.final.csv")
-source("code/functions/FunPlotSimple.R")
+source("code/functions/FunTablePrep.R")
+source("code/functions/FunPlotBar.R")
 .oldpar <- par()
 
 ## 0.1 clean slate ############################################################
@@ -17,9 +18,7 @@ source("code/functions/FunPlotSimple.R")
 pal <- qualpalr::qualpal(n = 3, list(h = c(0, 360), s = c(0.4, 0.6), l = c(0.6, 0.8)),
                cvd = "deutan", cvd_severity = 0.5)
 
-FunPlotBar(34, pal)
-FunPlotBar(35, pal)
-
+FunPlotBar(109, pal)
 
 # colours for euler
 pal <- qualpalr::qualpal(n = 2, list(h = c(0, 180), s = c(0.4, 0.6), l = c(0.6, 0.85)))
