@@ -64,19 +64,3 @@ catalog <- left_join(catalog, UNcodes, by = c("country" = "Country.or.Area"))
 
 #save catalog
 write.csv(catalog, "data/processed/catalog.final.csv")
-
-# layout helper table
-# layout help:
-
-layout.summary <- data_frame(country = catalog$country,
-                             year = catalog$year, 
-                             region = catalog$Region.Name,
-                             subregion = ifelse(catalog$Sub.region.Name == "Sub-Saharan Africa", catalog$Intermediate.Region.Name,
-                                                catalog$Sub.region.Name))
-layout.summary %>%  group_by(country) %>%
-  mutate(no = row_number()) %>%
-  spread(no, year, fill = "") %>% 
-  arrange(region, subregion) ->layout.summary
-
-#save catalog
-write.csv(layout.summary, "data/processed/layout.summary.csv")

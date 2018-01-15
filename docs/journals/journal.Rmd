@@ -215,6 +215,31 @@ could be used to restore these attributes.`
 
 3. Trying to get more resolution, sub.region name doens't help much, because all of ssa are togheter, but tehre is an intermediate region name for them.. 
 
+# Monday 15.1.2018
+
+1. Hm, it migth be easier if I throw out some repetition e.g. Peru has 7, 2000 - 2012, but they hardly budge. Maybe max them out at 4? Lets have a look at the ones that would have more. 
+
+2. Actually, maybe use the phase of the survey to align them somehow horizontally?
+
+3. OK, this looks good, but need to clear out some stuff:
+
+* Egypt has 2 phase 5
+* Senegal has 3 phase 7 and 2 phase 6 (continuous DHS?)
+* Dominical Republic has 2 phase 5 ones
+* Peru has 3 phase 6 and 3 pahse 5 (continuous DHS) 
+
+Should I just merge them together? OK, there will have to be a bespoke script in the plotting function to merge the ones here before calculating the proportions... And a note on the factsheet. 
+
+4. OK, used excel to manually plan out the layout of the whole thing. in `layout.summary.xlsx`. But now I'll remove the helpers for that, it's not important for reproducibility anyway. 
+
+5. OK, now need to add code to merge together the four country/survey combos above.. 
+
+6. ALso clean up the plot function, throw out the euler ones i'm not using any more.. 
+
+7. SPlit the plotting funciton and the table prep function, keeping it clean. 
+
+
+
 # ToDO 
 
 * graphviz prettify
