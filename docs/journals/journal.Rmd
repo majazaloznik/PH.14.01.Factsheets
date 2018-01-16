@@ -238,6 +238,35 @@ Should I just merge them together? OK, there will have to be a bespoke script in
 
 7. SPlit the plotting funciton and the table prep function, keeping it clean. 
 
+# Tuesday 16.1.2018
+
+1. OK, so we need to make sure all 5 possible options are always listed, and that the order is 1,3,2, other.. So the `FunTablePrep` function has to make that clear. OK, looks like i can reorder them and ignore the fact that there are sometimes 4 or 5 and sometimes only 3 rows - the NA rownames just get ignored in the plot, so it's fine. 
+
+2. Ah, I also want the N for each survey. And the year. And to get the N it's cleaner to remove the NAs from each TablePrep, OK, now it has both. 
+
+3. Now make sure `FunBarPlot` uses all three bits of info 
+
+4. But wait, no, the NAs from 1 don't always work fine... e.g. no 20. OK, `na.omit`.
+
+5. And actually, all the text rendering will happen in latex anyway, so i don't need to worry about the table prep, instead I need to update the catalog, and use a subset of the catalog later, in latex. OK, so table prep is now really OK.
+
+6. `FunBarplot` should also save each file.
+
+7. Odd things: 
+
+* Peru has a wave marked `PE6` in row 106, which is phase 5 according to the catalog. This is 5I. This must be an error, but not important for me atm. 
+
+* Egypt also has sth weird, two waves that are both in the same phase, so they got merged here. So I need to fix this and stop it from merging..Actually no, I won't. Keep it simple, one chart per phase. 
+
+8. OK, so now I've got all the charts and the psftag table, to help me automate the naming in Latex. 
+
+9. But what on earth have I done with the makefile.. I need to make sure this works at some point, but right now probably good idea to move on to LaTeX. 
+
+10. OK, last R thing for now, how do i make the psfrag thousands look nice, with commas?
+
+11. Need to get to grips with `multips` as well, this layout stuff manually is shit. 
+
+
 
 
 # ToDO 
