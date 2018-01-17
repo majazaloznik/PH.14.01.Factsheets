@@ -25,6 +25,10 @@ col3 = rgb(143, 192, 169, maxColorValue = 255)
 col2 = rgb(104, 176, 171, maxColorValue = 255)
 col6 = rgb(105, 109, 125, maxColorValue = 255)
 
+col1 = "goldenrod1"
+col2 = "firebrick"
+col3 = rgb(104, 176, 171, maxColorValue = 255)
+
 pal <- c(col1, col2, col3, NA, NA, col6, NA, NA, "white")
 
 
@@ -36,11 +40,29 @@ FunPlotBar(FunTablePrep(i), pal)
 }
 
 # extract catalog section for lookup to use with psfrag.
-catalog$psfrag <- paste(catalog$country, 
-                        "(", catalog$years.new,
+catalog$psfrag <- paste("(", catalog$years.new,
                         ") -- $N_{unweighted} =", format(catalog$valid.cases,big.mark=",", trim=TRUE), "$")
-psfrag <- cbind(catalog$wave, catalog$psfrag)
+psfrag <- cbind(catalog$country, catalog$wave, catalog$psfrag, 
+                as.character(catalog$Sub.region.Name),
+                as.character(catalog$Intermediate.Region.Name))
+
 write.csv(psfrag, "data/processed/psfrag.csv")
+write.csv(catalog, "data/processed/catalog.final.csv")
+
+## 1.2. Plot empty gridlines
+
+
+# plot 
+barplot(x[[1]], col = c(NA, NA, NA, NA, NA),
+        border = c(NA, NA, NA, NA, NA),
+        axes = FALSE, names.arg = NA)
+
+# add gridlines
+for ( l in seq(0, 1, 0.2)){
+  abline(h = l, col = "gray", lty = 5)
+}
+dev.copy2eps(file=paste0("figures/","gridlines",".eps"), height=4.5, width=6)
+
 
 
 # this is old stuff, might get reused one day. 

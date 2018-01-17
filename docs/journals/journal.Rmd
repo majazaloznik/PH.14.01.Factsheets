@@ -264,9 +264,24 @@ Should I just merge them together? OK, there will have to be a bespoke script in
 
 10. OK, last R thing for now, how do i make the psfrag thousands look nice, with commas?
 
-11. Need to get to grips with `multips` as well, this layout stuff manually is shit. 
+11. Need to get to grips with `multips` as well, this layout stuff manually is shit. e.g. herehttps://tex.stackexchange.com/questions/201560/using-pstricks-i-need-to-created-the-following-grid-sheet-which-fits-well-with 
 
+# Wednesday 17.1.18
 
+1. OK, starting laying out in Latex, but it;s all very cramped. No room for N, also tricky doing both ruban/rural, as well as year of survey.. Let's try more white space. And also change the ratio, theye need to be wider so I can get all of them on the plot..
+
+2. Also in pstricks need to use variables, definitions of values to stop copy pasting stuff around. Blog idea, this would be neat to sum up, for my own reference. seems \def causes problems if you do e.g. \def\indent, and presumably that already exists, so it fucks up and doesn't even give me an error (flashes it too quick for reading. 
+
+3. Odd things:
+* Ghana 2014 says phase 7, but wave is Gh6 (I put it down as 7)
+* Senegal overwrote SN6... need to go back and fix.
+* Because same as Ghana, the last three are phase y, but the wave is recorded as SN6.. This I will have to fix manually.
+* Ethiopia as well, says phase 5 but wave 4 for the 2005 one. 
+* And Rwanda, two actually there. 
+
+4. Also the axes are booring, I can do gridlines instead. 
+
+5. Half way there.. 
 
 
 # ToDO 

@@ -11,17 +11,28 @@
 
 
 FunPlotBar <- function(x, pal){
-  par(mar = c(2, 2, 2, 0)+0.2)
+  par(mar = c(2, 2, 4, 0)+0.2,
+      xpd = TRUE)
   # extract the colours we need from the pal
   pal <- pal[as.numeric(rownames(x[[1]]))]
   # plot 
   barplot(x[[1]], col = pal,
           axes = FALSE)
-  axis(2, las = 2)
+  
+  # add gridlines
+  for ( l in seq(0, 1, 0.2)){
+    abline(h = l, col = "gray", lty = 5)
+  }
+  
+  # plot overlay 
+  barplot(x[[1]], col = pal,
+          axes = FALSE,
+          add = TRUE)
   # title
   mtext( x[[2]], 
-        line = 1)
-  dev.copy2eps(file=paste0("figures/",x[[2]],".eps"), height=5, width=6)
+         line = 1)
+  
+  dev.copy2eps(file=paste0("figures/",x[[2]],".eps"), height=4.5, width=6)
 }
 
 
