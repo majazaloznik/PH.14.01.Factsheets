@@ -55,7 +55,7 @@ FunTablePrep <- function(i) {
   year <- range(all.rows$year)
   year <- ifelse(year[1] == year[2],year[1], paste(year[1], year[2], sep = "-"))
   catalog$years.new[i] <<- year
-  catalog$wave[i] <<- paste0(unique(df$wave),collapse="")
+ 
   
   # manually change name for two datasets that have a misleading `wave' value
   wave.name <- ifelse(any(all.rows$filecode == "SNIR7QDT"), "SN7",
@@ -63,8 +63,15 @@ FunTablePrep <- function(i) {
                              ifelse(any(all.rows$filecode == "ETIR51dt"), "ET5",
                                     ifelse(any(all.rows$filecode == "RWIR70DT"), "RW7",
                                            ifelse(any(all.rows$filecode == "RWIR53DT"), "RW5",
-                             paste0(unique(df$wave),collapse=""))))))
-  
+                                                  ifelse(any(all.rows$filecode == "COIR53DT"), "CO5",
+                                                         ifelse(any(all.rows$filecode == "COIR61DT"), "CO6",
+                                                                ifelse(any(all.rows$filecode == "BDIR72DT"), "BD7",
+                                                                       ifelse(all.rows$filecode == "KHIR73DT", "KH7", 
+                                                                              ifelse(all.rows$filecode == "KHIR61DT", "KH6", 
+                                                                                     ifelse(all.rows$filecode == "KHIR51DT", "KH5", 
+                                                                                            ifelse(all.rows$filecode == "KHIR42DT", "KH4", 
+                             paste0(unique(df$wave),collapse="")))))))))))))
+  catalog$wave[i] <<- wave.name
   # return for plotting
   return(list(pt, wave.name))
 }

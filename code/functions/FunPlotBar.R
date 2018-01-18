@@ -11,8 +11,6 @@
 
 
 FunPlotBar <- function(x, pal){
-  par(mar = c(2, 2, 4, 0)+0.2,
-      xpd = TRUE)
   # extract the colours we need from the pal
   pal <- pal[as.numeric(rownames(x[[1]]))]
   # plot 
@@ -28,12 +26,12 @@ FunPlotBar <- function(x, pal){
   barplot(x[[1]], col = pal,
           axes = FALSE,
           add = TRUE)
+  rect(-0.2, 0.18, 0.13, 0.82, col = "white", border = "white")
   # title
-  mtext( x[[2]], 
+  mtext( x[[2]], side = 2, 
          line = 1)
-  
-  dev.copy2eps(file=paste0("figures/",x[[2]],".eps"), height=4.5, width=6)
+  height = (38.5-1.2)/30*6/(29.2/15)
+  dev.copy2eps(file=paste0("figures/",x[[2]],".eps"), height=height, width=6)
 }
-
 
 

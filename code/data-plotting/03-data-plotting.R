@@ -33,7 +33,8 @@ pal <- c(col1, col2, col3, NA, NA, col6, NA, NA, "white")
 
 
 ## 1. Plotting ################################################################
-
+par(mar = c(2, 4, 0, 0)+0.2,
+    xpd = TRUE)
 # plot all the charts
 for(i in 1:nrow(catalog)){
 FunPlotBar(FunTablePrep(i), pal)
@@ -42,26 +43,27 @@ FunPlotBar(FunTablePrep(i), pal)
 # extract catalog section for lookup to use with psfrag.
 catalog$psfrag <- paste("(", catalog$years.new,
                         ") -- $N_{unweighted} =", format(catalog$valid.cases,big.mark=",", trim=TRUE), "$")
-psfrag <- cbind(catalog$country, catalog$wave, catalog$psfrag, 
-                as.character(catalog$Sub.region.Name),
-                as.character(catalog$Intermediate.Region.Name))
-
+psfrag <- data.frame(country = catalog$country, wave = catalog$wave, psfrag = catalog$psfrag, 
+                subregion = as.character(catalog$Sub.region.Name),
+                intermediate.region = as.character(catalog$Intermediate.Region.Name))
+psfrag <- dplyr::arrange(psfrag, subregion, intermediate.region, country)
 write.csv(psfrag, "data/processed/psfrag.csv")
-write.csv(catalog, "data/processed/catalog.final.csv")
+write.csv(catalog, "data/processed/catalog.finished.csv")
 
 ## 1.2. Plot empty gridlines
 
 
 # plot 
-barplot(x[[1]], col = c(NA, NA, NA, NA, NA),
+barplot(FunTablePrep(3)[[1]], col = c(NA, NA, NA, NA, NA),
         border = c(NA, NA, NA, NA, NA),
-        axes = FALSE, names.arg = NA)
+        axes = FALSE, names.arg = rep(NA, 2))
 
 # add gridlines
 for ( l in seq(0, 1, 0.2)){
   abline(h = l, col = "gray", lty = 5)
 }
-dev.copy2eps(file=paste0("figures/","gridlines",".eps"), height=4.5, width=6)
+height = (38.5-1.2)/30*6/(29.2/15)
+dev.copy2eps(file=paste0("figures/","gridlines",".eps"), height=height, width=6)
 
 
 

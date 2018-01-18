@@ -53,12 +53,12 @@ catalog <- dplyr::filter(catalog, output_filename != "data/raw/DRIR5ADT.zip")
 # rename countries to UN standard
 catalog$country <- as.character(catalog$countr)
 # rrename to UN standard country names
-catalog[catalog$country == "Congo Democratic Republic",2] <- "Democratic Republic of the Congo"
-catalog[catalog$country == "Bolivia",2] <- "Bolivia (Plurinational State of)"
-catalog[catalog$country == "Cote d'Ivoire",2] <- "Côte d'Ivoire"
-catalog[catalog$country == "Kyrgyz Republic",2] <- "Kyrgyzstan"
-catalog[catalog$country == "Moldova",2] <- "Republic of Moldova"
-catalog[catalog$country == "Tanzania",2] <- "United Republic of Tanzania"
+catalog[catalog$country == "Congo Democratic Republic",]$country <- "Democratic Republic of the Congo"
+catalog[catalog$country == "Bolivia",]$country <- "Bolivia (Plurinational State of)"
+catalog[catalog$country == "Cote d'Ivoire",]$country <- "Côte d'Ivoire"
+catalog[catalog$country == "Kyrgyz Republic",]$country <- "Kyrgyzstan"
+catalog[catalog$country == "Moldova",]$country <- "Republic of Moldova"
+catalog[catalog$country == "Tanzania",]$country <- "United Republic of Tanzania"
 # join with regional table
 catalog <- left_join(catalog, UNcodes, by = c("country" = "Country.or.Area"))
 

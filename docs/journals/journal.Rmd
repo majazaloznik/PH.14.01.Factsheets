@@ -283,6 +283,31 @@ Should I just merge them together? OK, there will have to be a bespoke script in
 
 5. Half way there.. 
 
+BUT - need woder and lower plots to fit it all in. Probably best thing to do would be to move year to the left side, rotated. 
+
+# Thursday 18.1.18
+
+1. Rwnanda all four have psfrag split codes, need to maunally do them. 
+
+2. Add white background for years.
+
+3. Move latin america right.
+
+4. What;s the deal with the dominican republic? There seems to be an error on the DHS side, why are there two phase 5 files, different id, but same number of cases, 5A and 52? Right, 5A is a special one, BATEYES, sugar plantation workers. Wait, but why are they the same size then? Oh, did my code merge them? Hm, looks like i didn't remove it when i said i did. that's because i'm beign so shit witht he make file, the makefile would have totally prevented any such shit.. OK, fixed that by reruning 02 and 03. 
+
+5. OK, now Colombia waves are off as well, one was def overwritten.. 
+
+6. Wave 4 in Armenia is also wrong. And Bangladesh.
+
+7. Looks like one of the Indias is only Kerala.. hmm. I should make a note of that
+
+8. Also Cambodia has a wrong wave.
+
+9. OK, they are all now in place, now polishing 
+
+10. TeX math: the calculation stuff works for ps coordinates, but for other stuff, e.g. the width of a parbox, you need to use the `calc` package. And there you don't define, you use \setlenght... Anyway, this is for a how to blog post some day. 
+
+11. A bit of rejigging, making sure everything fits tight and has the correct ratios. 
 
 # ToDO 
 

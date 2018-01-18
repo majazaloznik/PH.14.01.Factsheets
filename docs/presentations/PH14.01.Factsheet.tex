@@ -30,7 +30,7 @@
 }
 \DeclareRobustCommand{\firstsecond}[2]{#1}
 \makeatletter
-  \newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}% \tiny: 5/6
+  \newcommand{\miniscule}{\@setfontsize\miniscule{4}{5}}% \tiny: 5/6
     \newcommand{\minisculey}{\@setfontsize\minisculey{7}{8}}% \tiny: 5/6
   \newcommand{\mini}{\@setfontsize\miniscule{8}{9}}% \tiny: 5/6
   \newcommand{\maxi}{\@setfontsize\miniscule{10}{11}}% \tiny: 5/6
@@ -42,44 +42,87 @@
 \begin{document}
 
 
-\noindent\begin{pspicture}[showgrid=fasle](\paperwidth, \paperheight)
+\noindent\begin{pspicture}[showgrid=fasle](-0.5,0)(\paperwidth, \paperheight)
 
 %% HEADER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\psline(0.5,41.3)(29.2,41.3)
+\def\myheader{\psline(0.5,41.3)(29.2,41.3)
 \rput[bl](0.5,39.6){\BBB Contraceptive Decision-Making in Developing Countries}
 \psline(0.5,39.5)(29.2,39.5)
 \rput[bl](0.5,38.6){\small Husbands, wives or both partners jointly making the decisions about which contracepion to use}
 \psline(0.5,38.5)(29.2,38.5)
-\psline(0.5,1.2)(29.2,1.2)
+\psline(0.5,1.2)(29.2,1.2)}
 
 
 %% FOOTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\rput[bl](0.5,0.3){\small\textsc{Population Horizons Factsheet IV.} 
+\def\myfooter{\rput[bl](0.5,0.3){\small\textsc{Population Horizons Factsheet IV.} 
 \scriptsize (2017) Vol.14 Issue 1}
 \rput[br](29.2,39.7){\includegraphics[height=1.4cm]{../../figures/dglogo}}
 
 \rput[br](29.2,0.05){
 \mini \emph{By Maja Zalo\v znik} -- DOI XXX -- S.5}
+}
 
-\psline(0,2)(5,2)
-%\psgrid[xunit =1.85626cm, yunit = 1.392195,subgriddiv=1,griddots=10,gridlabels=7pt](2,2)(0,0)(20,30)
-\def\x{1.85626 }
-\def\y{1.392195 }
+\rput[bl](-0.5,0){
+\myheader
+\myfooter}
+
+\def\x{1.9467777 }%2.2/15
+\def\y{1.243333 }% 37.3/30
+
+%\psgrid[xunit =\x cm, yunit = \y,subgriddiv=1,griddots=10,gridlabels=7pt](2,2)(0,0)(20,33)
+
 \def\linez{-0.7 }
 \def\linezDone{-0.50 }
 \def\linezDtwo{-0.85 }
-\def\indentz{0.15 }
-\def\rowtop{22 }
+\def\indentz{0.1 }
+\def\rowtop{26 }
 \psset{xunit =\x cm, yunit = \y cm}
 
 \SpecialCoor
+\newlength{\myboxwidth}
 
-\rput[br](!0 \rowtop){% WEST AFRICA
-	\rput[Bl](0.1,1.25){\small{\emph{Western Africa}}}
+\setlength{\myboxwidth}{\x cm * \real{4.8}}%
+
+\rput[tl](!0 0.15 sub \rowtop 4.7 add ){
+\mini{\parbox[c]
+{\myboxwidth}{
+
+\maxi
+
+The Demographic and Health Survey (DHS) Programme has been conducting surveys to monitor indicators in the areas of population, health, and nutrition in over 90 countries for over thirty years. Since \emph{Wave 4} they have been asking the following question:
+
+\begin{quote}
+\emph{``Would you say that (not) using contraception is mainly
+your decision, mainly your (husband's/partner's)
+decision, or did you both decide together?''}
+\end{quote}
+
+ 
+}}}
+
+\rput[tl](!5 0.15 sub \rowtop  4.7 add ){
+\mini{\parbox[c]
+{\myboxwidth}{
+\maxi
+
+This chart brings together a total of 144 surveys where the question was asked in 67 countries, in some only once, in others up to four times over four waves. In each country we have split the data by urban/rural status.  The countries are arranged by regional groups 
+
+The data importation was automated$^*$ with the \texttt{lodown} package in R \citep{lodown}.
+}}}
+
+\rput[tl](!0 0.15 sub \rowtop 1.5 add ){
+\mini{\parbox[c]
+{\myboxwidth}{
+\scriptsize \textsc{Legend}
+\vspace{0.2em}
+}}}
+
+\def\westafrica{\rput[br](!0 \rowtop 3 sub){% WEST AFRICA
+	\rput[Bl](! \indentz 1.25){\small{\emph{Western Africa}}}
 	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Benin}}}
-	\psfrag{1}[][]{\miniscule{\emph{U}}}
-	\psfrag{2}[][]{\miniscule{\emph{R}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{{R}}}
 	\psfrag{BJ4}[][]{\minisculey{2001}}
 	\psfrag{BJ5}[][]{\minisculey{2006}}
 	\psfrag{BJ6}[][]{\minisculey{2011}}
@@ -155,7 +198,7 @@
 	\rput[bl](3,-10){\includegraphics[width = \x cm]{../../figures/SL6}}
 	
 	
-	\rput[Bl](!\indentz -10 \linez add ){\tiny{\emph{Senegal}}}
+	\rput[Bl](!\indentz -10 \linez add ){\tiny{\emph{Senegal $^\dagger$}}}
 	\psfrag{SN4}[][]{\minisculey{2005}}
 	\psfrag{SN6}[][]{\minisculey{2010--12}}
 	\psfrag{SN7}[][]{\minisculey{2014--16}}
@@ -167,14 +210,82 @@
 	\rput[Bl](!\indentz -11 \linez add ){\tiny{\emph{Togo}}}
 	\psfrag{TG6}[][]{\minisculey{2013}}
 	\rput[bl](3,-12){\includegraphics[width =\x cm]{../../figures/TG6}}
-}
+}}
 
-\rput[br](!0 \rowtop 14 sub){% MIDDLE AFRICA
+\def\latinamerica{\rput[br](!0 \rowtop 17 sub){% Latin America
+	\rput[Bl](0.1,1.25){\small{\emph{Latin America \& Caribbean}}}
+	\rput[Bl](!\indentz  1 \linezDone add){\tiny{\emph{Dominic.}}}
+	\rput[Bl](!\indentz  1 \linezDtwo add){\tiny{\emph{Republic}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{{R}}}
+	\psfrag{DR4}[][]{\minisculey{2002}}
+	\psfrag{DR5}[][]{\minisculey{2007}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/DR4}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/DR5}}
+	
+	\rput[Bl](!\indentz -0 \linez add ){\tiny{\emph{Haiti}}}
+	\psfrag{HT4}[][]{\minisculey{2000}}
+	\psfrag{HT5}[][]{\minisculey{2005}}
+	\psfrag{HT6}[][]{\minisculey{2012}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/HT4}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/HT5}}
+	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/HT6}}
+	
+	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Guatemala}}}
+	\psfrag{GU6}[][]{\minisculey{2014}}
+	\rput[bl](3,-2){\includegraphics[width = \x cm]{../../figures/GU6}}
+	
+	\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Honduras}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{{R}}}
+	\psfrag{HN5}[][]{\minisculey{2005}}
+	\psfrag{HN6}[][]{\minisculey{2011}}
+	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/HN5}}
+	\rput[bl](3,-3){\includegraphics[width = \x cm]{../../figures/HN6}}
+
+	\rput[Bl](!\indentz -3 \linez add ){\tiny{\emph{Nicaragua}}}
+	\psfrag{NC4}[][]{\minisculey{2001}}
+	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/NC4}}
+
+	\rput[Bl](!\indentz -4 \linez add ){\tiny{\emph{Bolivia}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{{R}}}
+	\psfrag{BO4}[][]{\minisculey{2003}}
+	\psfrag{BO5}[][]{\minisculey{2008}}
+	\rput[bl](1,-5){\includegraphics[width = \x cm]{../../figures/BO4}}
+	\rput[bl](2,-5){\includegraphics[width = \x cm]{../../figures/BO5}}
+	
+	\rput[Bl](!\indentz -5 \linez add ){\tiny{\emph{Colombia}}}
+	\psfrag{CO4}[][]{\minisculey{2000}}
+	\psfrag{CO5}[][]{\minisculey{2005}}
+	\psfrag{CO6}[][]{\minisculey{2011}}
+	\psfrag{CO7}[][]{\minisculey{2016}}
+	\rput[bl](1,-6){\includegraphics[width = \x cm]{../../figures/CO4}}
+	\rput[bl](2,-6){\includegraphics[width = \x cm]{../../figures/CO5}}
+	\rput[bl](3,-6){\includegraphics[width = \x cm]{../../figures/CO6}}
+	\rput[bl](4,-6){\includegraphics[width = \x cm]{../../figures/CO7}}
+	
+	\rput[Bl](!\indentz -6 \linez add ){\tiny{\emph{Guyana}}}
+	\psfrag{GY5}[][]{\minisculey{2009}}
+	\rput[bl](1,-7){\includegraphics[width = \x cm]{../../figures/GY5}}
+	
+	\rput[Bl](!\indentz -7 \linez add ){\tiny{\emph{Peru $^\dagger$}}}
+	\psfrag{PE4}[][]{\minisculey{2000}}
+	\psfrag{PE6PE5}[][]{\minisculey{2004-09}}
+	\psfrag{PE6}[][]{\minisculey{2010-12}}
+
+	\rput[bl](1,-8){\includegraphics[width = \x cm]{../../figures/PE4}}
+	\rput[bl](2,-8){\includegraphics[width = \x cm]{../../figures/PE6PE5}}
+	\rput[bl](3,-8){\includegraphics[width = \x cm]{../../figures/PE6}}
+	
+	}}
+	
+\def\middleafrica{\rput[br](!5 \rowtop 16 sub){% MIDDLE AFRICA
 	\rput[Bl](0.1,1.25){\small{\emph{Middle Africa}}}
 	
 	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Angola}}}
-	\psfrag{1}[][]{\miniscule{\emph{U}}}
-	\psfrag{2}[][]{\miniscule{\emph{R}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
 	\psfrag{AO7}[][]{\minisculey{2015}}
 	\rput[bl](4,0){\includegraphics[width = \x cm]{../../figures/AO7}}
 
@@ -189,7 +300,7 @@
 	\psfrag{CG6}[][]{\minisculey{2011}}
 	\rput[bl](3,-2){\includegraphics[width = \x cm]{../../figures/CG6}}
 	
-	\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Cameroon}}}
+	%\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Cameroon}}}
 	\psfrag{CM4}[][]{\minisculey{2004}}
 	\psfrag{CM6}[][]{\minisculey{2011}}
 	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/gridlines}}
@@ -201,13 +312,41 @@
 	\psfrag{GA6}[][]{\minisculey{2012}}
 	\rput[bl](3,-4){\includegraphics[width = \x cm]{../../figures/GA6}}
 
-}
+	\rput[Bl](!\indentz -4 \linez add ){\tiny{\emph{Sao Tome and Principe}}}
+	\psfrag{ST5}[][]{\minisculey{2008}}
+	\rput[bl](3,-5){\includegraphics[width = \x cm]{../../figures/ST5}}
+	
+}}
 
-\rput[br](!5 \rowtop){% NORTH AFRICA
+\def\southafrica{\rput[br](!5 \rowtop 23 sub){% SOUTH AFRICA
+	\rput[Bl](0.1,1.25){\small{\emph{Southern Africa}}}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Lesotho}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
+	\psfrag{LS4}[][]{\minisculey{2004}}
+	\psfrag{LS5}[][]{\minisculey{2009}}
+	\psfrag{LS6}[][]{\minisculey{2014}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/LS4}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/LS5}}
+	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/LS6}}
+	
+	\rput[Bl](!\indentz 0 \linez add ){\tiny{\emph{Namibia}}}
+	\psfrag{NM5}[][]{\minisculey{2006}}
+	\psfrag{NM6}[][]{\minisculey{2013}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/NM5}}
+	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/NM6}}
+	
+	
+	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Swaziland}}}
+	\psfrag{SZ5}[][]{\minisculey{2006}}
+	\rput[bl](2,-2){\includegraphics[width =\x cm]{../../figures/SZ5}}
+}}
+
+\def\northafrica{\rput[br](!5 \rowtop){% NORTH AFRICA
 	\rput[Bl](0.1,1.25){\small{\emph{Northern Africa}}}
 	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Egypt}}}
-	\psfrag{1}[][]{\miniscule{\emph{U}}}
-	\psfrag{2}[][]{\miniscule{\emph{R}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
 	\psfrag{EG5EG4}[][]{\minisculey{2005--08}}
 	\psfrag{EG6}[][]{\minisculey{2014}}
 	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/EG5EG4}}
@@ -216,10 +355,12 @@
 	\rput[Bl](!\indentz -0 \linez add ){\tiny{\emph{Morocco}}}
 	\psfrag{MA4}[][]{\minisculey{2003}}
 	\rput[bl](1,-1){\includegraphics[width =\x cm]{../../figures/MA4}}
-}
+}}
 
-\rput[br](!5 \rowtop 3 sub){% Eastern Africa
+\def\easternafrica{\rput[br](!5 \rowtop 3 sub){% Eastern Africa
 	\rput[Bl](0.1,1.25){\small{\emph{Eastern Africa}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
 	
 	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Burundi}}}
 	\psfrag{BU6}[][]{\minisculey{2010}}
@@ -270,10 +411,14 @@
 	\rput[bl](2,-6){\includegraphics[width = \x cm]{../../figures/MZ6}}
 	
 	\rput[Bl](!\indentz -6 \linez add ){\tiny{\emph{Rwanda}}}
-	\psfrag{RW4}[][]{\minisculey{2000}}
-	\psfrag{RW5}[][]{\minisculey{2005}}
-	\psfrag{RW6}[][]{\minisculey{2010}}
-	\psfrag{RW7}[][]{\minisculey{2014}}
+	\psfrag{R}[][]{\minisculey{}}
+	\psfrag{W4}[][]{\minisculey{2000}}
+	\psfrag{R}[][]{\minisculey{}}
+	\psfrag{W5}[][]{\minisculey{2005}}
+	\psfrag{R}[][]{\minisculey{}}
+	\psfrag{W6}[][]{\minisculey{2010}}
+	\psfrag{R}[][]{\minisculey{}}
+	\psfrag{W7}[][]{\minisculey{2014}}
 	\rput[bl](1,-7){\includegraphics[width = \x cm]{../../figures/RW4}}
 	\rput[bl](2,-7){\includegraphics[width = \x cm]{../../figures/RW5}}
 	\rput[bl](3,-7){\includegraphics[width = \x cm]{../../figures/RW6}}
@@ -313,12 +458,191 @@
 	\rput[bl](2,-11){\includegraphics[width = \x cm]{../../figures/ZW5}}
 	\rput[bl](3,-11){\includegraphics[width = \x cm]{../../figures/ZW6}}
 	\rput[bl](4,-11){\includegraphics[width = \x cm]{../../figures/ZW7}}
+}}
+
+\def\europe{\rput[br](!10 \rowtop 2 add){% europe
+	\rput[Bl](0.1,1.25){\small{\emph{Europe}}}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Albania}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
+	\psfrag{AL5}[][]{\minisculey{2008}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/AL5}}
+	
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Moldova}}}
+	\psfrag{MB5}[][]{\minisculey{2005}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/MB4}}
+
+	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{Ukraine}}}
+	\psfrag{UA5}[][]{\minisculey{2007}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/UA5}}
+}}
+
+\def\westasia{\rput[br](!10 \rowtop 2 sub){% WEST ASIA
+	\rput[Bl](0.1,1.25){\small{\emph{Western Asia}}}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Armenia}}}
+	\psfrag{1}[][]{\miniscule{U}}
+	\psfrag{2}[][]{\miniscule{R}}
+	\psfrag{AM4}[][]{\minisculey{2005}}
+	\psfrag{AM6}[][]{\minisculey{2010}}
+	\psfrag{AM7}[][]{\minisculey{2015}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/AM4}}
+	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/AM6}}
+	\rput[bl](4,0){\includegraphics[width = \x cm]{../../figures/AM7}}
+
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Azerbaijan}}}
+	\psfrag{AZ5}[][]{\minisculey{2006}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/AZ5}}
+
+	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{Jordan}}}
+	\psfrag{JO4}[][]{\minisculey{2002}}
+	\psfrag{JO5}[][]{\minisculey{2007}}
+	\psfrag{JO6}[][]{\minisculey{2012}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/JO4}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/JO5}}
+	\rput[bl](3,-2){\includegraphics[width = \x cm]{../../figures/JO6}}
+	
+	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Turkey}}}
+	\psfrag{TR4}[][]{\minisculey{2003}}
+	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/TR4}}
+	
+	
+	\rput[Bl](! \indentz -3 \linez add ){\tiny{\emph{Yemen}}}
+	\psfrag{YE6}[][]{\minisculey{2013}}
+	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/YE6}}
+}}
+
+\def\centralasia{\rput[br](!10 \rowtop 8 sub){% Central ASIA
+	\rput[Bl](0.1,1.25){\small{\emph{Central Asia}}}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Kyrgyzstan}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
+	\psfrag{KY6}[][]{\minisculey{2012}}
+	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/KY6}}
+	
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Tajikistan}}}
+	\psfrag{TJ6}[][]{\minisculey{2012}}
+	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/TJ6}}
+}}
+
+\def\southasia{\rput[br](!10 \rowtop 11 sub){% Souht ASIA
+	\rput[Bl](0.1,1.25){\small{\emph{Southern Asia}}}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Afghanistan}}}
+	\psfrag{1}[][]{\miniscule{{U}}}
+	\psfrag{2}[][]{\miniscule{R}}
+	\psfrag{AF76}[][]{\minisculey{2015}}
+	\rput[bl](4,0){\includegraphics[width = \x cm]{../../figures/AF7}}
+	
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Bangladesh}}}
+	\psfrag{BD6}[][]{\minisculey{2011}}
+	\psfrag{BD7}[][]{\minisculey{2014}}
+	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/BD6}}
+	\rput[bl](4,-1){\includegraphics[width = \x cm]{../../figures/BD7}}
+	
+	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{India$^\ddagger$}}}
+	\psfrag{IA5}[][]{\minisculey{2005}}
+	\psfrag{KE4}[][]{\minisculey{1998}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/IA5}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/KE4}}
+
+
+	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Maldives}}}
+	\psfrag{MV5}[][]{\minisculey{2009}}
+	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/MV5}}
+	
+	\rput[Bl](! \indentz -3 \linez add ){\tiny{\emph{Nepal}}}
+	\psfrag{NP4}[][]{\minisculey{2001}}
+	\psfrag{NP5}[][]{\minisculey{2006}}
+	\psfrag{NP6}[][]{\minisculey{2011}}
+	\psfrag{NP7}[][]{\minisculey{2016}}
+	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/NP4}}
+	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/NP5}}
+	\rput[bl](3,-4){\includegraphics[width = \x cm]{../../figures/NP6}}
+	\rput[bl](4,-4){\includegraphics[width = \x cm]{../../figures/NP7}}
+
+	\rput[Bl](! \indentz -4 \linez add ){\tiny{\emph{Pakistan}}}
+	\psfrag{PK6}[][]{\minisculey{2012}}
+	\rput[bl](3,-5){\includegraphics[width = \x cm]{../../figures/PK6}}
+}}
+
+\def\southeastasia{\rput[br](!10 \rowtop 18 sub){% Southeast ASIA
+	\rput[Bl](0.1,1.25){\small{\emph{South-eastern Asia}}}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Cambodia}}}
+	\psfrag{1}[][]{\miniscule{U}}
+	\psfrag{2}[][]{\miniscule{R}}
+	\psfrag{KH4}[][]{\minisculey{2000}}
+	\psfrag{KH5}[][]{\minisculey{2005}}
+	\psfrag{KH6}[][]{\minisculey{2010}}
+	\psfrag{KH7}[][]{\minisculey{2014}}
+	\rput[bl](1,-0){\includegraphics[width = \x cm]{../../figures/KH4}}
+	\rput[bl](2,-0){\includegraphics[width = \x cm]{../../figures/KH5}}
+	\rput[bl](3,-0){\includegraphics[width = \x cm]{../../figures/KH6}}
+	\rput[bl](4,-0){\includegraphics[width = \x cm]{../../figures/KH7}}
+
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Indonesia}}}
+	\psfrag{ID4}[][]{\minisculey{2002}}
+	\psfrag{ID5}[][]{\minisculey{2007}}
+	\psfrag{ID6}[][]{\minisculey{2012}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/ID4}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/ID5}}
+	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/ID6}}
+
+	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{Myanmar}}}
+	\psfrag{MM7}[][]{\minisculey{2015}}
+	\rput[bl](4,-2){\includegraphics[width = \x cm]{../../figures/MM7}}
+	
+	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Philipines}}}
+	\psfrag{PH4}[][]{\minisculey{2003}}
+	\psfrag{PH5}[][]{\minisculey{2008}}
+	\psfrag{PH6}[][]{\minisculey{2013}}
+	\rput[bl](1,-3){\includegraphics[width = \x cm]{../../figures/PH4}}
+	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/PH5}}
+	\rput[bl](3,-3){\includegraphics[width = \x cm]{../../figures/PH6}}
+	
+	\rput[Bl](!\indentz  -3 \linezDone add){\tiny{\emph{Timor}}}
+	\rput[Bl](!\indentz  -3 \linezDtwo add){\tiny{\emph{Leste}}}
+	\psfrag{TL5}[][]{\minisculey{2009}}
+	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/TL5}}
+}}
+
+\rput[bl](-.1,0){
+\westafrica 
+
+\easternafrica
+\northafrica
+\southafrica
+\middleafrica
+\latinamerica
+\rput[bl](0,1){
+\southeastasia
+\southasia
+\centralasia
+\westasia
+\europe
+}
 }
 
 
+\setlength{\myboxwidth}{\x cm * \real{5.3}}%
+
+
+\rput[tl](9.2,4.8){
+\mini{\parbox[c]
+{\myboxwidth}{\bibliographystyle{apa}
+\scriptsize \textsc{References:}
+
+\renewcommand\refname{}% removes default large title 
+\vspace*{-2.4cm}
+
+\maxi{\bibliography{lit.bib}}
+\vspace*{.2cm}
+
+* All the code and further details are available at \url{https://github.com/majazaloznik/PH.14.01.Factsheets}
+
+$\dagger$ In Senegal and Peru multiple surveys from a single '\emph{wave}` have meed merged together to keep with the 'one chart per wave' pattern. 
+
+$^\ddagger$ In 1998 the data for India is only for the state of Kerala. 
+}}}
+\psline(9.4, 2.7)(14.7,2.7)
+
 \end{pspicture}
-
 \end{document}
-
-
-
