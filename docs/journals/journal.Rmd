@@ -309,6 +309,17 @@ BUT - need woder and lower plots to fit it all in. Probably best thing to do wou
 
 11. A bit of rejigging, making sure everything fits tight and has the correct ratios. 
 
+
+# Friday 19.1.18
+
+1. Create legend.
+
+2. add gridlines leading in everywhere?
+
+3. Fix text. 
+
+4. complete draft.
+
 # ToDO 
 
 * graphviz prettify

@@ -34,6 +34,7 @@
     \newcommand{\minisculey}{\@setfontsize\minisculey{7}{8}}% \tiny: 5/6
   \newcommand{\mini}{\@setfontsize\miniscule{8}{9}}% \tiny: 5/6
   \newcommand{\maxi}{\@setfontsize\miniscule{10}{11}}% \tiny: 5/6
+    \newcommand{\maxier}{\@setfontsize\miniscule{11.5}{12}}% \tiny: 5/6
   \newcommand{\BBB}{\@setfontsize\BBB{32}{33}}% \tiny: 5/6
 
 \makeatother
@@ -90,7 +91,8 @@
 
 \maxi
 
-The Demographic and Health Survey (DHS) Programme has been conducting surveys to monitor indicators in the areas of population, health, and nutrition in over 90 countries for over thirty years. Since \emph{Wave 4} they have been asking the following question:
+The Demographic and Health Survey (DHS) Programme has been conducting surveys to monitor indicators in the areas of population, health, and nutrition in over 90 countries for over thirty years. Since \emph{Wave 4} they have been asking the following question of women who are married or cohabiting:
+\vspace{-0.1cm}
 
 \begin{quote}
 \emph{``Would you say that (not) using contraception is mainly
@@ -106,17 +108,47 @@ decision, or did you both decide together?''}
 {\myboxwidth}{
 \maxi
 
-This chart brings together a total of 144 surveys where the question was asked in 67 countries, in some only once, in others up to four times over four waves. In each country we have split the data by urban/rural status.  The countries are arranged by regional groups 
+This chart brings together the answers of over 800,000 women from a total of 144 surveys conducted in 67 countries---in some only once, in others up to four times over four waves. In each country we have split the respondents by urban/rural status.  The countries are arranged by regional groupings to allow for easier comparison and spotting patterns.  
+\vspace{4pt}
 
-The data importation was automated$^*$ with the \texttt{lodown} package in R \citep{lodown}.
+The data is made publicly available by \citet{DHS} and was extracted$^*$ using with the excellent \texttt{lodown} package in R \citep{lodown}. 
 }}}
 
-\rput[tl](!0 0.15 sub \rowtop 1.5 add ){
-\mini{\parbox[c]
-{\myboxwidth}{
-\scriptsize \textsc{Legend}
-\vspace{0.2em}
-}}}
+\rput[bl](!0   \rowtop  1 sub){
+
+\rput[bl](0,2.2){\scriptsize \textsc{Legend:}}
+\psfrag{1}[][]{\miniscule{{U}}}
+\psfrag{2}[][]{\miniscule{{R}}}
+\psfrag{XX}[][]{\minisculey{2001}}
+	
+\rput[bl](1.5,0.3){\includegraphics[width = \x cm]{../../figures/ledge}}
+\rput[bc](0.7, 1.7){\rnode{A}{\maxi \emph{Year of survey}}}
+\pnode(1.5, 1.35){Y}
+\nccurve[angleA = 270, , angleB =180, nodesepA = 2pt]{A}{Y}
+
+\rput[bc](1.2, .5){\rnode{B}{\maxi \emph{Urban}}}
+\rput[bc](0.5, .8){\rnode{C}{\maxi \emph{Rural}}}
+\pnode(1.8, 0.3){D}
+\nccurve[angleA = 270, , angleB = 230, nodesepA = 2pt]{B}{D}
+\pnode(2.25, 0.28){E}
+\nccurve[angleA = 270, angleB = 250, nodesepA = 2pt]{C}{E}
+
+\rput[Bl](3, 2.4){\rnode{F}{\maxi \emph{No answer}}}
+\rput[Bl](3, 1.9){\rnode{G}{\maxi \emph{Other}}}
+\rput[Bl](3, 1.4){\rnode{H}{\maxi \emph{Husband/partner }}}
+\rput[Bl](3, .9){\rnode{I}{\maxi \emph{Joint decision}}}
+\rput[Bl](3, .4){\rnode{J}{\maxi \emph{Wife}}}
+\pnode(2.5, 2.2){K}
+\nccurve[angleA = 180, , angleB = 0, nodesepA = 1pt]{F}{K}
+\pnode(2.5, 1.9){L}
+\nccurve[angleA = 180, , angleB = 0, nodesepA = 1pt]{G}{L}
+\pnode(2.5, 1.5){M}
+\nccurve[angleA = 180, , angleB = 0, nodesepA = 1pt]{H}{M}
+\pnode(2.5, 1.1){N}
+\nccurve[angleA = 180, , angleB = 0, nodesepA = 1pt]{I}{N}
+\pnode(2.5, 0.7){O}
+\nccurve[angleA = 180, , angleB = 0, nodesepA = 1pt]{J}{O}
+}
 
 \def\westafrica{\rput[br](!0 \rowtop 3 sub){% WEST AFRICA
 	\rput[Bl](! \indentz 1.25){\small{\emph{Western Africa}}}
@@ -140,8 +172,12 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	
 	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{C\^ote d'Ivoire}}}
 	\psfrag{CI6}[][]{\minisculey{2011}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-2){\includegraphics[width =\x cm]{../../figures/CI6}}
-	
+	\rput[Bl](!\indentz -1 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1.25,0.3)}
+	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{C\^ote d'Ivoire}}}
+		
 	\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Ghana}}}
 	\psfrag{GH4}[][]{\minisculey{2003}}
 	\psfrag{GH5}[][]{\minisculey{2008}}
@@ -153,6 +189,8 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	
 	\rput[Bl](!\indentz -3 \linez add ){\tiny{\emph{Gambia}}}
 	\psfrag{GM6}[][]{\minisculey{2013}}
+	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-4){\includegraphics[width =\x cm]{../../figures/GM6}}
 	
 	\rput[Bl](!\indentz -4 \linez add ){\tiny{\emph{Guinea}}}
@@ -166,6 +204,7 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\rput[Bl](!\indentz -5 \linez add ){\tiny{\emph{Liberia}}}
 	\psfrag{LB5}[][]{\minisculey{2007}}
 	\psfrag{LB6}[][]{\minisculey{2013}}
+	\rput[bl](1,-6){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-6){\includegraphics[width = \x cm]{../../figures/LB5}}
 	\rput[bl](3,-6){\includegraphics[width = \x cm]{../../figures/LB6}}
 	
@@ -188,6 +227,7 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\rput[Bl](!\indentz -8 \linez add ){\tiny{\emph{Niger}}}
 	\psfrag{NI5}[][]{\minisculey{2006}}
 	\psfrag{NI6}[][]{\minisculey{2012}}
+	\rput[bl](1,-9){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-9){\includegraphics[width = \x cm]{../../figures/NI5}}
 	\rput[bl](3,-9){\includegraphics[width = \x cm]{../../figures/NI6}}
 	
@@ -196,7 +236,9 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{SL6}[][]{\minisculey{2013}}
 	\rput[bl](2,-10){\includegraphics[width = \x cm]{../../figures/SL5}}
 	\rput[bl](3,-10){\includegraphics[width = \x cm]{../../figures/SL6}}
-	
+	\rput[bl](1,-10){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[Bl](!\indentz -9 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1.2,0.3)}
+	\rput[Bl](!\indentz -9 \linez add ){\tiny{\emph{Sierra Leone}}}
 	
 	\rput[Bl](!\indentz -10 \linez add ){\tiny{\emph{Senegal $^\dagger$}}}
 	\psfrag{SN4}[][]{\minisculey{2005}}
@@ -209,6 +251,8 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	
 	\rput[Bl](!\indentz -11 \linez add ){\tiny{\emph{Togo}}}
 	\psfrag{TG6}[][]{\minisculey{2013}}
+	\rput[bl](1,-12){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-12){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-12){\includegraphics[width =\x cm]{../../figures/TG6}}
 }}
 
@@ -233,17 +277,23 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	
 	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Guatemala}}}
 	\psfrag{GU6}[][]{\minisculey{2014}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-2){\includegraphics[width = \x cm]{../../figures/GU6}}
-	
+	\rput[Bl](!\indentz -1 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1.05,0.3)}
+	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Guatemala}}}
+
+
 	\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Honduras}}}
 	\psfrag{1}[][]{\miniscule{{U}}}
 	\psfrag{2}[][]{\miniscule{{R}}}
 	\psfrag{HN5}[][]{\minisculey{2005}}
 	\psfrag{HN6}[][]{\minisculey{2011}}
+	\rput[bl](1,-3){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/HN5}}
 	\rput[bl](3,-3){\includegraphics[width = \x cm]{../../figures/HN6}}
 
-	\rput[Bl](!\indentz -3 \linez add ){\tiny{\emph{Nicaragua}}}
+	\rput[Bl](!\indentz -3 \linez add ){\maxier{\emph{Nicaragua}}}
 	\psfrag{NC4}[][]{\minisculey{2001}}
 	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/NC4}}
 
@@ -286,35 +336,49 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Angola}}}
 	\psfrag{1}[][]{\miniscule{{U}}}
 	\psfrag{2}[][]{\miniscule{R}}
-	\psfrag{AO7}[][]{\minisculey{2015}}
+	\psfrag{A}[][]{\minisculey{}}
+	\psfrag{O7}[][]{\minisculey{2015}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](4,0){\includegraphics[width = \x cm]{../../figures/AO7}}
 
 
 	\rput[Bl](!\indentz 0 \linez add ){\tiny{\emph{DR Congo}}}
 	\psfrag{CD5}[][]{\minisculey{2007}}
 	\psfrag{CD6}[][]{\minisculey{2013}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/CD5}}
 	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/CD6}}
-	
+	\rput[Bl](!\indentz 0 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1,0.3)}	
+	\rput[Bl](!\indentz 0 \linez add ){\tiny{\emph{DR Congo}}}
+
 	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Congo}}}
 	\psfrag{CG6}[][]{\minisculey{2011}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-2){\includegraphics[width = \x cm]{../../figures/CG6}}
 	
-	%\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Cameroon}}}
+	\rput[Bl](!\indentz -2 \linez add ){\maxier{\emph{Cameroon}}}
 	\psfrag{CM4}[][]{\minisculey{2004}}
 	\psfrag{CM6}[][]{\minisculey{2011}}
 	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/gridlines}}
-	\rput[bl](1.1,-3){\includegraphics[width = \x cm]{../../figures/CM4}}
+	\rput[bl](1,-3){\includegraphics[width = \x cm]{../../figures/CM4}}
 	\rput[bl](3,-3){\includegraphics[width = \x cm]{../../figures/CM6}}
-	\rput[Bl](!\indentz -2 \linez add ){\tiny{\emph{Cameroon}}}
 	
 	\rput[Bl](!\indentz -3 \linez add ){\tiny{\emph{Gabon}}}
-	\psfrag{GA6}[][]{\minisculey{2012}}
+	\psfrag{GA6}[][]{\minisculey{2012}}		
+	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-4){\includegraphics[width = \x cm]{../../figures/GA6}}
 
-	\rput[Bl](!\indentz -4 \linez add ){\tiny{\emph{Sao Tome and Principe}}}
+	\rput[Bl](!\indentz -4 \linez add ){\tiny{\emph{Sao Tome \& Principe}}}
 	\psfrag{ST5}[][]{\minisculey{2008}}
+	\rput[bl](1,-5){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-5){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-5){\includegraphics[width = \x cm]{../../figures/ST5}}
+	\rput[Bl](!\indentz -4 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(2.1,0.3)}	
+	\rput[Bl](!\indentz -4 \linez add ){\tiny{\emph{Sao Tome \& Principe}}}
 	
 }}
 
@@ -333,13 +397,18 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\rput[Bl](!\indentz 0 \linez add ){\tiny{\emph{Namibia}}}
 	\psfrag{NM5}[][]{\minisculey{2006}}
 	\psfrag{NM6}[][]{\minisculey{2013}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/NM5}}
 	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/NM6}}
 	
 	
 	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Swaziland}}}
 	\psfrag{SZ5}[][]{\minisculey{2006}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-2){\includegraphics[width =\x cm]{../../figures/SZ5}}
+	\rput[Bl](!\indentz -1 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(.95,0.3)}
+	\rput[Bl](!\indentz -1 \linez add ){\tiny{\emph{Swaziland}}}
+
 }}
 
 \def\northafrica{\rput[br](!5 \rowtop){% NORTH AFRICA
@@ -349,6 +418,7 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{2}[][]{\miniscule{R}}
 	\psfrag{EG5EG4}[][]{\minisculey{2005--08}}
 	\psfrag{EG6}[][]{\minisculey{2014}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/EG5EG4}}
 	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/EG6}}
 
@@ -363,7 +433,9 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{2}[][]{\miniscule{R}}
 	
 	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Burundi}}}
-	\psfrag{BU6}[][]{\minisculey{2010}}
+	\psfrag{U6}[][]{\minisculey{2010}}
+	\psfrag{B}[][]{\minisculey{}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2, 0){\includegraphics[width = \x cm]{../../figures/BU6}}
 	
 	\rput[Bl](!\indentz 0 \linez add ){\tiny{\emph{Ethiopia}}}
@@ -387,6 +459,7 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	
 	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Comoros}}}
 	\psfrag{KM6}[][]{\minisculey{2012}}
+	\rput[bl](1,-3){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2, -3){\includegraphics[width = \x cm]{../../figures/KM6}}
 	
 	\rput[Bl](!\indentz .35 sub -3 \linez add ){\tiny{\emph{Madagascar}}}
@@ -466,14 +539,18 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{1}[][]{\miniscule{{U}}}
 	\psfrag{2}[][]{\miniscule{R}}
 	\psfrag{AL5}[][]{\minisculey{2008}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/AL5}}
 	
 	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Moldova}}}
-	\psfrag{MB5}[][]{\minisculey{2005}}
+	\psfrag{MB4}[][]{\minisculey{2005}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/MB4}}
 
 	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{Ukraine}}}
-	\psfrag{UA5}[][]{\minisculey{2007}}
+	\psfrag{U}[][]{\minisculey{}}
+	\psfrag{A5}[][]{\minisculey{2007}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/UA5}}
 }}
 
@@ -485,14 +562,19 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{AM4}[][]{\minisculey{2005}}
 	\psfrag{AM6}[][]{\minisculey{2010}}
 	\psfrag{AM7}[][]{\minisculey{2015}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/AM4}}
 	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/AM6}}
 	\rput[bl](4,0){\includegraphics[width = \x cm]{../../figures/AM7}}
 
 	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Azerbaijan}}}
 	\psfrag{AZ5}[][]{\minisculey{2006}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/AZ5}}
-
+	\rput[Bl](!\indentz 0 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1,0.3)}
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Azerbaijan}}}
+	
+	
 	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{Jordan}}}
 	\psfrag{JO4}[][]{\minisculey{2002}}
 	\psfrag{JO5}[][]{\minisculey{2007}}
@@ -503,11 +585,13 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	
 	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Turkey}}}
 	\psfrag{TR4}[][]{\minisculey{2003}}
+	\rput[bl](1,-3){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/TR4}}
 	
 	
 	\rput[Bl](! \indentz -3 \linez add ){\tiny{\emph{Yemen}}}
 	\psfrag{YE6}[][]{\minisculey{2013}}
+	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/YE6}}
 }}
 
@@ -517,11 +601,21 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{1}[][]{\miniscule{{U}}}
 	\psfrag{2}[][]{\miniscule{R}}
 	\psfrag{KY6}[][]{\minisculey{2012}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/KY6}}
-	
+\rput[Bl](!\indentz 1 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1.05,0.3)}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Kyrgyzstan}}}
+
+
 	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Tajikistan}}}
 	\psfrag{TJ6}[][]{\minisculey{2012}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/TJ6}}
+	\rput[Bl](!\indentz 0 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(.99,0.3)}
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Tajikistan}}}
+
 }}
 
 \def\southasia{\rput[br](!10 \rowtop 11 sub){% Souht ASIA
@@ -530,14 +624,24 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\psfrag{1}[][]{\miniscule{{U}}}
 	\psfrag{2}[][]{\miniscule{R}}
 	\psfrag{AF76}[][]{\minisculey{2015}}
+	\rput[bl](1,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](3,0){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](4,0){\includegraphics[width = \x cm]{../../figures/AF7}}
+	\rput[Bl](!\indentz 1 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1.15,0.3)}
+	\rput[Bl](! \indentz 1 \linez add ){\tiny{\emph{Afghanistan}}}
+
 	
 	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Bangladesh}}}
 	\psfrag{BD6}[][]{\minisculey{2011}}
 	\psfrag{BD7}[][]{\minisculey{2014}}
+	\rput[bl](1,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-1){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-1){\includegraphics[width = \x cm]{../../figures/BD6}}
 	\rput[bl](4,-1){\includegraphics[width = \x cm]{../../figures/BD7}}
-	
+	\rput[Bl](!\indentz 0 \linez add ){\psframe[linecolor = white,fillcolor=white, fillstyle= solid](0,-.1)(1.1,0.3)}
+	\rput[Bl](! \indentz 0 \linez add ){\tiny{\emph{Bangladesh}}}
+
 	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{India$^\ddagger$}}}
 	\psfrag{IA5}[][]{\minisculey{2005}}
 	\psfrag{KE4}[][]{\minisculey{1998}}
@@ -547,6 +651,7 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 
 	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Maldives}}}
 	\psfrag{MV5}[][]{\minisculey{2009}}
+	\rput[bl](1,-3){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-3){\includegraphics[width = \x cm]{../../figures/MV5}}
 	
 	\rput[Bl](! \indentz -3 \linez add ){\tiny{\emph{Nepal}}}
@@ -561,6 +666,8 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 
 	\rput[Bl](! \indentz -4 \linez add ){\tiny{\emph{Pakistan}}}
 	\psfrag{PK6}[][]{\minisculey{2012}}
+	\rput[bl](1,-5){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-5){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](3,-5){\includegraphics[width = \x cm]{../../figures/PK6}}
 }}
 
@@ -588,9 +695,12 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 
 	\rput[Bl](! \indentz -1 \linez add ){\tiny{\emph{Myanmar}}}
 	\psfrag{MM7}[][]{\minisculey{2015}}
+	\rput[bl](1,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](2,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}
+	\rput[bl](3,-2){\includegraphics[width = \x cm]{../../figures/gridlines}}	
 	\rput[bl](4,-2){\includegraphics[width = \x cm]{../../figures/MM7}}
 	
-	\rput[Bl](! \indentz -2 \linez add ){\tiny{\emph{Philipines}}}
+	\rput[Bl](! \indentz -2 \linez add ){\maxier{\emph{Philipines}}}
 	\psfrag{PH4}[][]{\minisculey{2003}}
 	\psfrag{PH5}[][]{\minisculey{2008}}
 	\psfrag{PH6}[][]{\minisculey{2013}}
@@ -601,10 +711,11 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 	\rput[Bl](!\indentz  -3 \linezDone add){\tiny{\emph{Timor}}}
 	\rput[Bl](!\indentz  -3 \linezDtwo add){\tiny{\emph{Leste}}}
 	\psfrag{TL5}[][]{\minisculey{2009}}
+	\rput[bl](1,-4){\includegraphics[width = \x cm]{../../figures/gridlines}}
 	\rput[bl](2,-4){\includegraphics[width = \x cm]{../../figures/TL5}}
 }}
 
-\rput[bl](-.1,0){
+\rput[bl](-.2,0){
 \westafrica 
 
 \easternafrica
@@ -634,9 +745,9 @@ The data importation was automated$^*$ with the \texttt{lodown} package in R \ci
 \vspace*{-2.4cm}
 
 \maxi{\bibliography{lit.bib}}
-\vspace*{.2cm}
+\vspace*{.3cm}
 
-* All the code and further details are available at \url{https://github.com/majazaloznik/PH.14.01.Factsheets}
+* All the code, summary tables, and further details are available at \url{https://github.com/majazaloznik/PH.14.01.Factsheets}
 
 $\dagger$ In Senegal and Peru multiple surveys from a single '\emph{wave}` have meed merged together to keep with the 'one chart per wave' pattern. 
 
