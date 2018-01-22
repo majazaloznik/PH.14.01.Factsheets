@@ -320,6 +320,17 @@ BUT - need woder and lower plots to fit it all in. Probably best thing to do wou
 
 4. complete draft.
 
+# Monday 22.1.18
+
+ OK, so poster is complete, what needs to be done now. 
+
+1. I need to make sure the makefile is clean and actually runs.
+
+2. I need to write up a methodology report, short version for teh README, and long version for report.
+
+3. I also need to make the tabled data clean and available, and reflect that in the README. 
+ 
+ OK, got the data out. Need to think about the weights. What is the unit of analysis? Women?
 # ToDO 
 
 * graphviz prettify

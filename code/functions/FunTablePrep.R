@@ -21,7 +21,6 @@
 #' sums up to unweighted. 
 
 
-
 FunTablePrep <- function(i) {
   row <- catalog[i,]
   
@@ -43,8 +42,26 @@ FunTablePrep <- function(i) {
   catalog$total.cases[i] <<- nrow(df)
   df <- df[!is.na(df$var ),]
   
+  # weighted counts table
+  w.counts <- xtabs(df$weight ~ df$var + df$region)/1000000
+  catalog$urban.wife[i] <<-  w.counts["1", "1"]
+  catalog$urban.husband[i] <<- w.counts["2", "1"]
+  catalog$urban.both[i] <<- w.counts["3", "1"]
+
+  catalog$rural.wife[i] <<-  w.counts["1", "2"]
+  catalog$rural.husband[i] <<- w.counts["2", "2"]
+  catalog$rural.both[i] <<-  w.counts["3", "2"]
+  
+  if ("6" %in% unlist(dimnames(w.counts))) {
+    catalog$urban.other[i] <<- w.counts["6", "1"]
+    catalog$rural.other[i] <<- w.counts["6", "2"]}
+  
+  if ("9" %in% unlist(dimnames(w.counts))) {
+    catalog$urban.missing[i] <<- w.counts["9", "1"]
+    catalog$rural.missing[i] <<- w.counts["9", "2"]}
+
   # proportional table 
-  pt <- prop.table(xtabs(df$weight ~ df$var + df$region), 2) 
+  pt <- prop.table(w.counts, 2) 
   
   # swap rows 2 and 3
   new.order <- na.omit(match(c("1", "3","2" , "6", "9"), rownames(pt)))
