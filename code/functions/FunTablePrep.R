@@ -16,9 +16,7 @@
 #' 
 #' Outups a list: 
 #' [[1]] is the prop xtable  to be used in the barplot
-#' [[2]] is the year or range of years, which isused in the title
-#' [[3]] is the N of cases with valid `var` values, so what 100% 
-#' sums up to unweighted. 
+#' [[2]] is the wave name
 
 
 FunTablePrep <- function(i) {

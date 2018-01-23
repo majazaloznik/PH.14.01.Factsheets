@@ -2,7 +2,10 @@
 title: "Journal"
 output:
   pdf_document: default
+  html_document:
+    df_print: paged
 ---
+
 # Tuesday 5.12.2017
 
 1. This project had been started over a month ago, and got pretty far, then was asked by SH to stop working on the FS.. Anyway, I'm now starting again, first by migrating it into my new project template, makefile and all.
@@ -270,7 +273,7 @@ Should I just merge them together? OK, there will have to be a bespoke script in
 
 1. OK, starting laying out in Latex, but it;s all very cramped. No room for N, also tricky doing both ruban/rural, as well as year of survey.. Let's try more white space. And also change the ratio, theye need to be wider so I can get all of them on the plot..
 
-2. Also in pstricks need to use variables, definitions of values to stop copy pasting stuff around. Blog idea, this would be neat to sum up, for my own reference. seems \def causes problems if you do e.g. \def\indent, and presumably that already exists, so it fucks up and doesn't even give me an error (flashes it too quick for reading. 
+2. Also in pstricks need to use variables, definitions of values to stop copy pasting stuff around. Blog idea, this would be neat to sum up, for my own reference. seems `\def` causes problems if you do e.g. `\def\indent`, and presumably that already exists, so it fucks up and doesn't even give me an error (flashes it too quick for reading. 
 
 3. Odd things:
 * Ghana 2014 says phase 7, but wave is Gh6 (I put it down as 7)
@@ -305,7 +308,7 @@ BUT - need woder and lower plots to fit it all in. Probably best thing to do wou
 
 9. OK, they are all now in place, now polishing 
 
-10. TeX math: the calculation stuff works for ps coordinates, but for other stuff, e.g. the width of a parbox, you need to use the `calc` package. And there you don't define, you use \setlenght... Anyway, this is for a how to blog post some day. 
+10. TeX math: the calculation stuff works for ps coordinates, but for other stuff, e.g. the width of a parbox, you need to use the `calc` package. And there you don't define, you use `\setlenght`... Anyway, this is for a how to blog post some day. 
 
 11. A bit of rejigging, making sure everything fits tight and has the correct ratios. 
 
@@ -331,10 +334,21 @@ BUT - need woder and lower plots to fit it all in. Probably best thing to do wou
 3. I also need to make the tabled data clean and available, and reflect that in the README. 
  
  OK, got the data out. Need to think about the weights. What is the unit of analysis? Women?
+ 
+
+# Tuesday 23.1.18
+
+1. README: needs structure and pointers to where the important things are. 
+ 
+2. Phase VII - did they also ask currently married/non-users? the recode hasn't been published yet. Looks like they didn't, that's a different question, so the recode works fine ;) (Make sure you fix the question on the poster)
+
+3. Damn, but the missing values are inconsistent. now i need to find v502 and 312 as well, to get the correct 'universe' of women, and know for sure which ones are missing and which ones not...
+
+
 # ToDO 
 
 * graphviz prettify
 * test minimal makefile example before making this whole thing work again
 
-
+Shit, what now?
 
