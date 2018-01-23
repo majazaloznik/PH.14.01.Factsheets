@@ -9,5 +9,12 @@
 /results
 /data-sources
 *.html
-
-
+*.eps
+*.ps
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.out
+*

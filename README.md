@@ -1,10 +1,42 @@
-# Populaiton Horizons Factsheet Vol 14 Issues 1
-## Global comparison on contraception decision-makeing in married unions based on DHS data
+### Populaiton Horizons Factsheet Vol 14 Issues 1
+# Contraceptive Decision-Making in Developing Countries
 
-Repository for analysis and design of the factsheet---and any interactive visualisations that may follow--- for the 14(1) issue of Population Horizons.
+*Repository for analysis and design of the factsheet---and any interactive visualisations that may follow--- for the 14(1) issue of Population Horizons.*
+
+The [Demographic and Health Survey (DHS) Programme](https://dhsprogram.com/Data/) has been conducting surveys to monitor indicators in the areas of population, health, and nutrition in over 90 countries for over thirty years. Since \emph{Wave 4} they have been asking the following question of women who are married or cohabiting:
+
+>*``Would you say that (not) using contraception is mainly your decision, mainly your (husband's/partner's) decision, or did you both decide together?''*
 
 
-## Makefile
+This analysis brings together the answers of over 800,000 women from a total of 144 surveys conducted in 67 countries---in some only once, in others up to four times over four waves from 1998 to 2016. The factsheet provides a convenient visualisation of the patterns, geographical and temporal as can be seen from this extract here.
+![](figures/extract.png)
+
+#### Relevant links
+
+
+* The factsheet/poster itself--[PH14.01.Factsheet.pdf](docs/presentations/PH14.01.Factsheet.pdf)
+* The data table clean and extracted (144 rows, one for each country/survey combination and the weighted counts of each group)--[final.data.csv](data/processed/final.data.csv)
+* The detailed methodology report--[methods.pdf](docs/reports/methods.pdf)
+
+## Methods summary
+
+*[This is a brief outline of the methodology, for more detail see the [methods.pdf](docs/reports/methods.pdf)` report]*
+
+#### Data
+
+The 
+
+#### Reproducibility
+
+#### 
+
+
+
+
+
+## Technical summary
+
+#### Makefile
 
 The makefile is visualised below---be warned, this is the current state of the project, which is still in progress. 
 
@@ -26,4 +58,4 @@ This project is licensed under the ?
 
 ## Acknowledgments
 
-TBC
+@ajdamico 
