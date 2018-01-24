@@ -338,11 +338,35 @@ BUT - need woder and lower plots to fit it all in. Probably best thing to do wou
 
 # Tuesday 23.1.18
 
-1. README: needs structure and pointers to where the important things are. 
+1. README: needs structure and pointers to where the important things are. OK
  
 2. Phase VII - did they also ask currently married/non-users? the recode hasn't been published yet. Looks like they didn't, that's a different question, so the recode works fine ;) (Make sure you fix the question on the poster)
 
 3. Damn, but the missing values are inconsistent. now i need to find v502 and 312 as well, to get the correct 'universe' of women, and know for sure which ones are missing and which ones not...
+
+# Wednesday 24.1.18
+
+OK, so update 1: remove all the 'missing answer' ones. That is the quick, first option. Although it would be more informationful to know the missing answers... Should I go for that option instead?
+
+1. OK, first fix FunDataExtractor to add the `v312` and `v502` variables.
+2. then rerun `02-clean.R`.
+3. OK, this seems to have worked, and hardly changed anything except for Kenya and Turkey, which now have around half missing!? Hmm, weird. 
+
+4. move the final.csv to human.readable.resutls
+
+5. OK, this is now publishable, only the makefile/reproducibility issue needs to be fixed. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # ToDO 
@@ -350,5 +374,5 @@ BUT - need woder and lower plots to fit it all in. Probably best thing to do wou
 * graphviz prettify
 * test minimal makefile example before making this whole thing work again
 
-Shit, what now?
+
 

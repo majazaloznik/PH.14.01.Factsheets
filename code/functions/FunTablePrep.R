@@ -29,6 +29,8 @@ FunTablePrep <- function(i) {
   df <- data.frame(wave = character(), 
                    weight = integer() , 
                    region = integer(), 
+                   contraception = integer(),
+                   married = integer(),
                    var  = integer())
 
   # read to df (multiple files if required)
@@ -36,12 +38,14 @@ FunTablePrep <- function(i) {
     df <- rbind(df, readRDS(all.rows$final.rds[j]))
   }
   
-  # drop cases with no valid var (save number before)
+  # drop ineligible cases (save number before)
+  
   catalog$total.cases[i] <<- nrow(df)
-  df <- df[!is.na(df$var ),]
+  df <- df[df$married == 1 & df$contraception > 0,]
+  df[is.na(df)] <- 9
   
   # weighted counts table
-  w.counts <- xtabs(df$weight ~ df$var + df$region)/1000000
+  w.counts <- xtabs(df$weight ~ df$var + df$region, addNA = TRUE)/1000000
   catalog$urban.wife[i] <<-  w.counts["1", "1"]
   catalog$urban.husband[i] <<- w.counts["2", "1"]
   catalog$urban.both[i] <<- w.counts["3", "1"]
@@ -58,6 +62,7 @@ FunTablePrep <- function(i) {
     catalog$urban.missing[i] <<- w.counts["9", "1"]
     catalog$rural.missing[i] <<- w.counts["9", "2"]}
 
+  
   # proportional table 
   pt <- prop.table(w.counts, 2) 
   
@@ -66,7 +71,7 @@ FunTablePrep <- function(i) {
   pt <- pt[new.order ,]
   
   #update the catalog
-  catalog$valid.cases[i] <<- nrow(df)
+  catalog$eligible.cases[i] <<- nrow(df)
   year <- range(all.rows$year)
   year <- ifelse(year[1] == year[2],year[1], paste(year[1], year[2], sep = "-"))
   catalog$years.new[i] <<- year

@@ -16,7 +16,7 @@ source("code/functions/FunPlotBar.R")
 # add new columns to catalogue to be updated during plotting
 
 catalog$total.cases <- NA
-catalog$valid.cases <- NA
+catalog$eligible.cases <- NA
 catalog$wave <- NA
 catalog$years.new <- NA
 catalog$urban.wife <- NA
@@ -45,19 +45,19 @@ par(mar = c(2, 4, 0, 0)+0.2,
 
 # plot all the charts
 for(i in 1:nrow(catalog)){
-FunPlotBar(FunTablePrep(i), pal)
+  FunPlotBar(FunTablePrep(i), pal)
 }
 
 # extract catalog with data for reuse
 
 final.data <- dplyr::select(catalog, country, years.new, phase, Region.Name, 
-                         Sub.region.Name, Intermediate.Region.Name,
-                         ISO.alpha3.Code, total.cases, valid.cases, 
-                         urban.wife, urban.both, urban.husband, urban.other, urban.missing,
-                         rural.wife, rural.both, rural.husband, rural.other, rural.missing)
+                            Sub.region.Name, Intermediate.Region.Name,
+                            ISO.alpha3.Code, total.cases, eligible.cases, 
+                            urban.wife, urban.both, urban.husband, urban.other, urban.missing,
+                            rural.wife, rural.both, rural.husband, rural.other, rural.missing)
 
 
-write.csv(final.data, "data/processed/final.data.csv")
+write.csv(final.data, "results/human-readable/final.data.csv")
 
 ## 1.2. Plot ledge
 

@@ -22,8 +22,10 @@ FunDataExtractor <- function(i){
                                 select=c(v000,
                                          v005,
                                          v102,
+                                         v312,
+                                         v502,
                                          v632))
-        colnames(extract.table) <- c("wave", "weight", "region", "var")
+        colnames(extract.table) <- c("wave", "weight", "region", "contraception", "married","var")
         saveRDS(extract.table, file.extracted)
       } else {# all are NAs
         catalog$v632[i] <<- FALSE }
