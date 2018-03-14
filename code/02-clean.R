@@ -22,7 +22,7 @@
 ###############################################################################
 library(dplyr)
 library(tidyr)
-source("code/functions/FunDataExtractor.R")
+source("code/FunDataExtractor.R")
 catalog <- readRDS("data/interim/catalog.rds")
 # add new empty variable to keep track of which files have been extracted
 catalog$v632 <- NA
@@ -53,12 +53,12 @@ catalog <- dplyr::filter(catalog, output_filename != "data/raw/DRIR5ADT.zip")
 # rename countries to UN standard
 catalog$country <- as.character(catalog$countr)
 # rrename to UN standard country names
-catalog[catalog$country == "Congo Democratic Republic",]$country <- "Democratic Republic of the Congo"
-catalog[catalog$country == "Bolivia",]$country <- "Bolivia (Plurinational State of)"
-catalog[catalog$country == "Cote d'Ivoire",]$country <- "Côte d'Ivoire"
-catalog[catalog$country == "Kyrgyz Republic",]$country <- "Kyrgyzstan"
-catalog[catalog$country == "Moldova",]$country <- "Republic of Moldova"
-catalog[catalog$country == "Tanzania",]$country <- "United Republic of Tanzania"
+catalog[which(catalog$country == "Congo Democratic Republic"),"country"] <- "Democratic Republic of the Congo"
+catalog[which(catalog$country == "Bolivia"),"country"]$country <- "Bolivia (Plurinational State of)"
+catalog[which(catalog$country == "Cote d'Ivoire"),"country"]$country <- "Côte d'Ivoire"
+catalog[which(catalog$country == "Kyrgyz Republic"),"country"]$country <- "Kyrgyzstan"
+catalog[which(catalog$country == "Moldova"),"country"]$country <- "Republic of Moldova"
+catalog[which(catalog$country == "Tanzania"),"country"]$country <- "United Republic of Tanzania"
 # join with regional table
 catalog <- left_join(catalog, UNcodes, by = c("country" = "Country.or.Area"))
 

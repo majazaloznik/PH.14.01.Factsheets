@@ -8,8 +8,8 @@
 library(dplyr)
 options(stringsAsFactors = FALSE)
 catalog <- read.csv("data/processed/catalog.final.csv")
-source("code/functions/FunTablePrep.R")
-source("code/functions/FunPlotBar.R")
+source("code/FunTablePrep.R")
+source("code/FunPlotBar.R")
 .oldpar <- par()
 
 ## 0.1 clean slate ############################################################
@@ -40,9 +40,6 @@ pal <- c(col1, col2, col3, NA, NA, col6, NA, NA, "white")
 
 
 ## 1. Plotting ################################################################
-par(mar = c(2, 4, 0, 0)+0.2,
-    xpd = TRUE)
-
 # plot all the charts
 for(i in 1:nrow(catalog)){
   FunPlotBar(FunTablePrep(i), pal)
@@ -60,7 +57,11 @@ final.data <- dplyr::select(catalog, country, years.new, phase, Region.Name,
 write.csv(final.data, "results/human-readable/final.data.csv")
 
 ## 1.2. Plot ledge
-
+height = (38.5-1.2)/30*6/(29.2/15)
+postscript(file=paste0("figures/","ledge",".eps"),
+           horiz=FALSE,onefile=FALSE,width=6,height=height*2,paper="special") 
+par(mar = c(2, 4, 0, 0)+0.2,
+    xpd = TRUE)
 ledge <- matrix(c(.3,.25, .17, .08, .1,
                   .25,.2, .2, .15, .1), nrow = 2, byrow = TRUE)
 # plot 
@@ -78,15 +79,15 @@ barplot(t(ledge), col = pal[c(1,3,2,6,9)],
 rect(-0.2, 0.35, 0.13, 0.65, col = "white", border = "white")
 mtext( "XX", side = 2, 
        line = 1)
-height = (38.5-1.2)/30*6/(29.2/15)
-dev.copy2eps(file=paste0("figures/","ledge",".eps"), height=height*2, width=6)
-
+dev.off()
 
 ## 1.2. Plot empty gridlines
-
-
+postscript(file=paste0("figures/","gridlines",".eps"),
+           horiz=FALSE,onefile=FALSE,width=6,height=height,paper="special") 
+par(mar = c(2, 4, 0, 0)+0.2,
+    xpd = TRUE)
 # plot 
-barplot(FunTablePrep(3)[[1]], col = c(NA, NA, NA, NA, NA),
+barplot(FunTablePrep(1)[[1]], col = c(NA, NA, NA, NA, NA),
         border = c(NA, NA, NA, NA, NA),
         axes = FALSE, names.arg = rep(NA, 2))
 
@@ -94,38 +95,5 @@ barplot(FunTablePrep(3)[[1]], col = c(NA, NA, NA, NA, NA),
 for ( l in seq(0, 1, 0.2)){
   abline(h = l, col = "gray", lty = 5)
 }
-height = (38.5-1.2)/30*6/(29.2/15)
-dev.copy2eps(file=paste0("figures/","gridlines",".eps"), height=height, width=6)
+dev.off()
 
-
-# this is old stuff, might get reused one day. 
-# # colours for euler
-# pal <- qualpalr::qualpal(n = 2, list(h = c(0, 180), s = c(0.4, 0.6), l = c(0.6, 0.85)))
-# plot(pal)
-# w1 <- pal$RGB[1,1]
-# w2 <- pal$RGB[1,2]
-# w3 <- pal$RGB[1,3]
-# h1 <- pal$RGB[2,1]
-# h2 <- pal$RGB[2,2]
-# h3 <- pal$RGB[2,3]
-# 
-# alpha = 0.4
-# col1 <- rgb(w1, w2, w3, alpha)
-# col1.b <- rgb(1,1,1,0.7)
-# col2 <- rgb(h1, h2, h3, alpha)
-# col2.b <- rgb(1,1,1,0.7)
-# 
-# # plot euler diagrams
-# cairo_ps("figures/test2.eps", width = 12, height = 12)
-# layout(matrix(c(1:12), nrow = 4))
-# par(mar = c(1, 1, 1, 1))
-# for(i in 1:12){
-#   FunPlotBase(i, col1, col1.b, col2, col2.b)
-# }
-# dev.off()
-# par() <-.oldpar
-# 
-# 
-# cairo_ps("figures/test1.eps")
-# FunPlotSimple(i)
-# dev.off()

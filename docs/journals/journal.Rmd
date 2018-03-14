@@ -369,7 +369,17 @@ No, not really. When I managed to get the msys one in front of the rtools one, t
 
 Well, not completely. Now it's using an old version of `sed`.. I just deleted it from the msys folder, fuck it. 
 
+# Wednesday 14.3.2018
 
+OK, a minimal test now worked of the makefile, so I migth be ready to apply it here to the production. And clean up some stuff as well:
+
+* use the hidden .config file for my passwords 
+* fix definitions of variables: folders and files
+* update commands for make2dot, dot2make, rmd2pdf, rmd2html, tex2dvi, dvi2ps
+* get the `dot` part to work, cool.
+* get the `journal` part to work
+* make all the nondocumented changes i made to the test example again ;)
+* especially the switch to postscript from dev.copy2 eps, which obviously doesn't work if there is no device..
 
 
 

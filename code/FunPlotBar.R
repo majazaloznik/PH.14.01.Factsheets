@@ -13,6 +13,11 @@
 FunPlotBar <- function(x, pal){
   # extract the colours we need from the pal
   pal <- pal[as.numeric(rownames(x[[1]]))]
+  height <- (38.5-1.2)/30*6/(29.2/15)
+  postscript(file=paste0("figures/",x[[2]],".eps"),
+             horiz=FALSE,onefile=FALSE,width=6,height=height,paper="special") 
+  par(mar = c(2, 4, 0, 0)+0.2,
+      xpd = TRUE)
   # plot 
   barplot(x[[1]], col = pal,
           axes = FALSE)
@@ -30,8 +35,7 @@ FunPlotBar <- function(x, pal){
   # title
   mtext( x[[2]], side = 2, 
          line = 1)
-  height = (38.5-1.2)/30*6/(29.2/15)
-  dev.copy2eps(file=paste0("figures/",x[[2]],".eps"), height=height, width=6)
+  dev.off()
 }
 
 
