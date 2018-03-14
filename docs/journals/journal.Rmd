@@ -356,9 +356,18 @@ OK, so update 1: remove all the 'missing answer' ones. That is the quick, first 
 
 5. OK, this is now publishable, only the makefile/reproducibility issue needs to be fixed. 
 
+# LATER
 
+OK, need to figure out the whole make thing and make sure it works properly. reading throught the Mecklenburg book (and thinking of writing one on make in R..)
 
+# Thursday 8.2.18
 
+Managed to figure out how to update my make.. and it was a bit complicated. I had a 3.79.1. make from rtools, then managed to get two new ones from msys and MinGW, but before I figured how to get them into the correct environmetal path variable it took a while. I'm still not clear actually. If I change the Rtools ones name (to xmake.exe), then it finds the new 3.81 msys version, that i've added to the user path variable. But if i try adding it to the system path variable it doesn't work. and because apparently the system path variable takes precedence from the user ones (they are appended only at the end) i cant change that. (don't know how)
+
+But perhaps it is OK now.
+No, not really. When I managed to get the msys one in front of the rtools one, then it lost texlive somehow.. so pandoc/pdflatex didn't work. OK, now i fixed both things by taking both rtools paths from the system one to my account level environment vars, and it seems to work
+
+Well, not completely. Now it's using an old version of `sed`.. I just deleted it from the msys folder, fuck it. 
 
 
 
