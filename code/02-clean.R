@@ -37,7 +37,7 @@ UNcodes <- read.csv("data/raw/UNcodes.csv", stringsAsFactors = FALSE)
 #' 
 #' The catalog gets updated with each one as well, 
 #' 
-for (i in 1:nrow(catalog)){
+for (i in c(1:80, 82:nrow(catalog))){
   FunDataExtractor(i)
 }
 

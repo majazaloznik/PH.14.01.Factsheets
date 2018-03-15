@@ -43,7 +43,8 @@ FunTablePrep <- function(i) {
   catalog$total.cases[i] <<- nrow(df)
   df <- df[df$married == 1 & df$contraception > 0,]
   df[is.na(df)] <- 9
-  
+  # this is because of Namibia files having weirdly missing rows
+  df <- df[which(df$region != 9),]
   # weighted counts table
   w.counts <- xtabs(df$weight ~ df$var + df$region, addNA = TRUE)/1000000
   catalog$urban.wife[i] <<-  w.counts["1", "1"]
@@ -80,7 +81,7 @@ FunTablePrep <- function(i) {
   # manually change name for two datasets that have a misleading `wave' value
   wave.name <- ifelse(any(all.rows$filecode == "SNIR7QDT"), "SN7",
                       ifelse(any(all.rows$filecode == "GHIR72DT"), "GH7",
-                             ifelse(any(all.rows$filecode == "ETIR51dt"), "ET5",
+                             ifelse(any(all.rows$filecode == "ETIR51DT"), "ET5",
                                     ifelse(any(all.rows$filecode == "RWIR70DT"), "RW7",
                                            ifelse(any(all.rows$filecode == "RWIR53DT"), "RW5",
                                                   ifelse(any(all.rows$filecode == "COIR53DT"), "CO5",

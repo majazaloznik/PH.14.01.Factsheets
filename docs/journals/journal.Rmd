@@ -380,13 +380,21 @@ OK, a minimal test now worked of the makefile, so I migth be ready to apply it h
 * get the `journal` part to work
 * make all the nondocumented changes i made to the test example again ;)
 * especially the switch to postscript from dev.copy2 eps, which obviously doesn't work if there is no device..
+* YEAY, works!!
 
+OK, this all looks great,let me try a second country.
 
+That worked, but running the whole thing didn't got stuck on India again. 
 
+# Thursday 15.3.18
 
+OK, so this seems to be the limit of the Windows machine, even though I have 8GB RAM here, the India file won't load, so I can only run this on linux. For some reason India72 is missing from my original poster, even though it seems that the question was asked (it's in the questionnaire) and that I noted in the journal that I got it to work once i fixed the `memory.limit()`. I'll try it again at home, for now i'll just skip it manually in `02-clean` just to see if i can run the whole thing in one. 
 
+This is going to be a bitch to maintain, since the catalog keeps getting updated and old names changed... So in `03-data-plotting` the wave names are used to assign the plot its name, but these are not consistent and have changed even in the last two months, so i'm manually changing them in the `FunTablePrep.R` script. 
 
+FFS, now there seem to be two namibia files, NM51 and NM61 that suddenly have missing regions and have the wave. No, row 733 (and two more) is missing completely, need to ensure these rows get deleted. But where they came from all of a sudden is anyone's guess. 
 
+Also all of a sudden there was a problem with the `dglogo.eps` file with os2pdf not liking it and throwing an error about 9.15: Unrecoverable error, exit code 1 undefinedresource. I only know it was that file through elimination. But I swapped it for another copy and it seems fine now.. 
 
 # ToDO 
 

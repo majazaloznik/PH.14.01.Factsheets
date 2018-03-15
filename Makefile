@@ -6,15 +6,14 @@ CODE = $(DIR)/code#
 
 DATA = $(DIR)/data
 
+FIG = $(DIR)/figures
+
 DT/P = $(DATA)/processed
 DT/R = $(DATA)/raw
 DT/I = $(DATA)/interim
 
 JRN := $(DIR)/docs/journals
-
-D/J = $(DOCS)/journals
-
-FIG = $(DIR)/figures
+RPRT := $(DIR)/docs/reports
 
 RESULTS := $(DIR)/results/human-readable
 
@@ -54,7 +53,7 @@ define rmd2pdf
  Rscript -e "suppressWarnings(suppressMessages(require(rmarkdown)));\
  render('$<', output_dir = '$(@D)', output_format = 'pdf_document',\
  quiet = TRUE )"
- -rm $(wildcard ./docs/*/tex2pdf*) -fr
+ -rm $(wildcard $(@D)/tex2pdf*) -fr
 endef 
 
 # recipe to knit html from first prerequisite
@@ -90,12 +89,15 @@ endef
 define sourceR
 	Rscript -e "source('$<')"
 endef
+
+
+
 # DEPENDENCIES   ##############################################################
 ###############################################################################
 
 .PHONY: all
 
-all: pdf journal readme
+all: pdf journal readme methods
 
 pdf: $(POSTER).pdf
 
@@ -123,15 +125,20 @@ $(JRN)/journal.pdf:  $(JRN)/journal.Rmd dot
 
 # journal (with graph) render to  html
 $(JRN)/journal.html:  $(JRN)/journal.Rmd dot
-	$(rmd2pdf)
+	$(rmd2html)
 	
 	
-# README from Rmds ###########################################################
+# README from Rmds #############################################################
 readme: README.html
 
 README.html: README.md dot results
 	$(rmd2html)
 
+# methods from Rmds ############################################################
+methods: $(RPRT)/methods.pdf
+
+$(RPRT)/methods.pdf:  $(RPRT)/methods.Rmd dot 
+	$(rmd2pdf)
 
 
 # POSTER #######################################################################

@@ -60,8 +60,7 @@ catalog <- subset(
 catalog$output_filename <-
   sub("((\\w*/){2})(.*)/(.*$)", "\\1\\4",
       catalog$output_filename)
-# i treid changing this to interim, but didn't do anything, goes into raw
-# anyway..
+
 catalog$output_folder <- "data/raw"
 rownames(catalog) <- seq(length = nrow(catalog))
 

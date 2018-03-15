@@ -6,7 +6,6 @@
 .touching
 
 /data
-/results
 /data-sources
 *.html
 *.eps
