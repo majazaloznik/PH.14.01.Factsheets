@@ -64,10 +64,10 @@ catalog$output_filename <-
 catalog$output_folder <- "data/raw"
 rownames(catalog) <- seq(length = nrow(catalog))
 
+# remove India 72 :(
+# I can't load it on any 8GB laptop, so it's out unfortunately
+catalog <- catalog[catalog$filecode != "IAIR72DT",]
 ## 1.3. Download files#########################################################
-# Now if I run this normally, the Kenya one will overwrite the Kerala one,
-# as  they are all inthe same folder. I don't need Kerala now, so
-# I'm ignorig this for now
 
 catalog <- lodown(
   "dhs" ,

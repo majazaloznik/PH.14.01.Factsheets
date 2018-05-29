@@ -396,6 +396,10 @@ FFS, now there seem to be two namibia files, NM51 and NM61 that suddenly have mi
 
 Also all of a sudden there was a problem with the `dglogo.eps` file with os2pdf not liking it and throwing an error about 9.15: Unrecoverable error, exit code 1 undefinedresource. I only know it was that file through elimination. But I swapped it for another copy and it seems fine now.. 
 
+# Friday 16.3.2018
+
+OK, running the whole thing on either a Windows or ubuntu machine stops at the India file, it's too large and I can't load it. On ubuntu it just kills the R process, on Widnows it gives an error, in both cases this is   `haven::read_dta`, so not `lowdown` directly. Nothing I can do, but remove it unfortunately. 
+
 # ToDO 
 
 * graphviz prettify

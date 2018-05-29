@@ -30,5 +30,6 @@ FunDataExtractor <- function(i){
       } else {# all are NAs
         catalog$v632[i] <<- FALSE }
     }
+  
 }
 
