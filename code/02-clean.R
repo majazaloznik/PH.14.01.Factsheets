@@ -35,9 +35,8 @@ UNcodes <- read.csv("data/raw/UNcodes.csv", stringsAsFactors = FALSE)
 #' but also checks if thv v632 variable exists, otehrwise we don't need that 
 #' table anyway. 
 #' 
-#' The catalog gets updated with each one as well, 
-#' 
-for (i in c(1:80, 82:nrow(catalog))){
+
+for (i in c(1:nrow(catalog))){
   FunDataExtractor(i)
 }
 

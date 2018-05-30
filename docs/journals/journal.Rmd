@@ -394,16 +394,39 @@ This is going to be a bitch to maintain, since the catalog keeps getting updated
 
 FFS, now there seem to be two namibia files, NM51 and NM61 that suddenly have missing regions and have the wave. No, row 733 (and two more) is missing completely, need to ensure these rows get deleted. But where they came from all of a sudden is anyone's guess. 
 
-Also all of a sudden there was a problem with the `dglogo.eps` file with os2pdf not liking it and throwing an error about 9.15: Unrecoverable error, exit code 1 undefinedresource. I only know it was that file through elimination. But I swapped it for another copy and it seems fine now.. 
+Also all of a sudden there was a problem with the `dglogo.eps` file with ps2pdf not liking it and throwing an error about 9.15: Unrecoverable error, exit code 1 undefinedresource. I only know it was that file through elimination. But I swapped it for another copy and it seems fine now.. 
 
 # Friday 16.3.2018
 
 OK, running the whole thing on either a Windows or ubuntu machine stops at the India file, it's too large and I can't load it. On ubuntu it just kills the R process, on Widnows it gives an error, in both cases this is   `haven::read_dta`, so not `lowdown` directly. Nothing I can do, but remove it unfortunately. 
 
+
+# 20.5.2018
+
+Hm, good i have some documentation, but it's still not great for getting back to it two months later.. 
+So I think the mini-test folder is now no longer required, except for the make-journal.
+This folder is OK except for the namibia one, I need to fix. 
+
+And not sure I want to run the whole thing really.. ever again. 
+
+OK, in the mean time another Uganda survey has been added and a mozabmique one, which doesn't actually have this question. 
+
+Now looks complete, fixed Namibia as well. 
+
+All it needs now is a DOI. 
+
+
+
+
 # ToDO 
 
 * graphviz prettify
 * test minimal makefile example before making this whole thing work again
+
+# Lessons learned:
+
+There are several loops in the code, going through all 200 or whatever coutries. If it fails on a single country everything gets repeated. That's insane. Make sure you don't do that ever again. 
+
 
 
 

@@ -67,6 +67,7 @@ rownames(catalog) <- seq(length = nrow(catalog))
 # remove India 72 :(
 # I can't load it on any 8GB laptop, so it's out unfortunately
 catalog <- catalog[catalog$filecode != "IAIR72DT",]
+row.names(catalog) <- 1:nrow(catalog)
 ## 1.3. Download files#########################################################
 
 catalog <- lodown(
