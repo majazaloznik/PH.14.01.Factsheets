@@ -336,6 +336,8 @@ Also good for testing if a file exists - if it doesn't the variable is empty.
 
 `md-exists = $(wildcard *.md)`
 
+Apparenlty also the `wildcard` function forces the globbing to be done immediately - otherwise make will wait until the variable is used i.n an appropriate place before expanding the glob. So if none of the files exist, the variable will be empty. (got this from [here](https://stackoverflow.com/questions/29357746/how-to-set-a-variable-in-a-makefile-to-a-filename-via-a-file-pattern-only-if-th)
+
 #### `$(dir list...)`
 
 Returns the dir portion of the files in list. Eg if you are looking for the folders that have `.Rmd` files:
@@ -490,6 +492,8 @@ You can make functions more reusable by adding hooks to them. A *hook* is a func
 ### Passing parameters
 
 Nah, too complicated for my lady brain..
+
+Edit: OK, so I know how to pass a parameter from make (from the shell really) to R. So anything I type after the  `Rscript` command can get picked up in R using the `commandArgs()` function. This is e.g. how I pass the folder paths to the R script creating the png image from the dot file in the ProspectiveAge dataset repository (2018)
 
 
 # OK, mini-test

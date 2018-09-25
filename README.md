@@ -14,10 +14,11 @@ This analysis brings together the answers of over 800,000 women from a total of 
 
 #### Relevant links
 
-
 * The factsheet/poster itself--[PH14.01.Factsheet.pdf](docs/presentations/PH14.01.Factsheet.pdf)
-* The data table clean and extracted (144 rows, one for each country/survey combination and the weighted counts of each group)--[final.data.csv](results/human-readable/final.data.csv)
+* The prospective age *old-age threshold* calculated for all 20 countries for the period 1953-2098 along with the proportions of the population over 65 and over the threshodl--[final.data.csv](results/human-readable/final.data.csv)
 * The detailed methodology report--[methods.pdf](docs/reports/methods.pdf)
+
+
 
 ## Methods summary
 
