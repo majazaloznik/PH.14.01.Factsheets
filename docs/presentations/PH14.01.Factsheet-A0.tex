@@ -1,6 +1,6 @@
-\documentclass[a3, landscape]{a0poster}
+\documentclass[a1]{a0poster}
 \usepackage{graphicx,lipsum}
-\usepackage[paperwidth=297mm,paperheight=420mm,margin=0mm, landscape]{geometry}
+\usepackage[paperwidth=594mm,paperheight=841mm,margin=0mm]{geometry}
 \usepackage{calc}
 \pagestyle{empty}
 \usepackage{xcolor}
@@ -42,8 +42,8 @@
 
 \begin{document}
 
-
-\noindent\begin{pspicture}[showgrid=fasle](-0.5,0)(\paperwidth, \paperheight)
+\noindent\resizebox{593.5mm}{840.5mm}{%
+\noindent\begin{pspicture}[showgrid=fasle](-0.5,0)(297mm,420mm)
 
 %% HEADER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\myheader{\psline(0.5,41.3)(29.2,41.3)
@@ -759,5 +759,5 @@ $^\ddagger$ In 1998 the data for India is only for the state of Kerala.
 \psline(9.4, 2.7)(14.7,2.7)
 
 \end{pspicture}
-
+}
 \end{document}

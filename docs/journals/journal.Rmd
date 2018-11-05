@@ -416,6 +416,9 @@ Now looks complete, fixed Namibia as well.
 All it needs now is a DOI. 
 
 
+# 5.11.2018
+
+Make poster size A0!
 
 
 # ToDO 

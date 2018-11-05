@@ -28,7 +28,7 @@ DT/I/.rds := $(DT/I)/AFIR70DT.rds # $(wildcard $(DT/I)/*.rds)
 DT/P/.rds := $(DT/P)/AFIR70DT.rds # $(wildcard $(DT/P)/*.rds)
 
 # poster filename
-POSTER := $(DIR)/docs/presentations/PH14.01.Factsheet
+POSTER := $(DIR)/docs/presentations/PH14.01.Factsheet-A0
 
 
 # COMMANDS ####################################################################
